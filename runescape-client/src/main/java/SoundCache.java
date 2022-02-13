@@ -166,7 +166,7 @@ public class SoundCache {
 			Buffer var4 = new Buffer(new byte[1000]); // L: 46
 
 			do {
-				int var5 = var3.read(var4.array, var4.offset, 1000 - var4.offset); // L: 48
+				int var5 = var3.read(var4.payload, var4.offset, 1000 - var4.offset); // L: 48
 				if (var5 == -1) { // L: 49
 					var4.offset = 0; // L: 55
 					long var7 = var4.readLong(); // L: 56

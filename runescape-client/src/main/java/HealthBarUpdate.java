@@ -68,6 +68,6 @@ public class HealthBarUpdate extends Node {
 	)
 	static int method2185(int var0, int var1) {
 		long var2 = (long)((var0 << 16) + var1); // L: 150
-		return class131.NetCache_currentResponse != null && var2 == class131.NetCache_currentResponse.key ? class138.NetCache_responseArchiveBuffer.offset * 99 / (class138.NetCache_responseArchiveBuffer.array.length - class131.NetCache_currentResponse.padding) + 1 : 0; // L: 151 152
+		return class131.NetCache_currentResponse != null && var2 == class131.NetCache_currentResponse.key ? class138.NetCache_responseArchiveBuffer.offset * 99 / (class138.NetCache_responseArchiveBuffer.payload.length - class131.NetCache_currentResponse.padding) + 1 : 0; // L: 151 152
 	}
 }

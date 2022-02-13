@@ -149,6 +149,7 @@ public class UserComparator6 extends AbstractUserComparator {
 	static void method2503(int var0) {
 		if (var0 != Client.loginState) { // L: 12057
 			Client.loginState = var0; // L: 12058
+			System.out.println("loginState == " + var0);
 		}
 	} // L: 12059
 }

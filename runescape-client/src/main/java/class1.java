@@ -111,12 +111,12 @@ public class class1 implements Callable {
 		Buffer var9 = new Buffer(var5.offset + var4.offset + var8.offset + 5); // L: 107
 		var9.writeByte(2); // L: 108
 		var9.writeByte(var4.offset); // L: 109
-		var9.writeBytes(var4.array, 0, var4.offset); // L: 110
+		var9.writeBytes(var4.payload, 0, var4.offset); // L: 110
 		var9.writeByte(var5.offset); // L: 111
-		var9.writeBytes(var5.array, 0, var5.offset); // L: 112
+		var9.writeBytes(var5.payload, 0, var5.offset); // L: 112
 		var9.writeShort(var8.offset); // L: 113
-		var9.writeBytes(var8.array, 0, var8.offset); // L: 114
-		String var10 = class114.method2545(var9.array); // L: 115
+		var9.writeBytes(var8.payload, 0, var8.offset); // L: 114
+		String var10 = class114.method2545(var9.payload); // L: 115
 
 		try {
 			URL var11 = new URL(HealthBar.method2246("services", false) + "m=accountappeal/login.ws"); // L: 117
@@ -163,11 +163,11 @@ public class class1 implements Callable {
 			var9 = new Buffer(new byte[1000]); // L: 149
 
 			do {
-				int var25 = var24.read(var9.array, var9.offset, 1000 - var9.offset); // L: 151
+				int var25 = var24.read(var9.payload, var9.offset, 1000 - var9.offset); // L: 151
 				if (var25 == -1) { // L: 152
 					var13.close(); // L: 158
 					var24.close(); // L: 159
-					String var27 = new String(var9.array); // L: 160
+					String var27 = new String(var9.payload); // L: 160
 					if (var27.startsWith("OFFLINE")) { // L: 161
 						return 4; // L: 162
 					} else if (var27.startsWith("WRONG")) { // L: 164
@@ -179,11 +179,11 @@ public class class1 implements Callable {
 					} else {
 						var9.xteaDecryptAll(var6); // L: 173
 
-						while (var9.offset > 0 && var9.array[var9.offset - 1] == 0) { // L: 174
+						while (var9.offset > 0 && var9.payload[var9.offset - 1] == 0) { // L: 174
 							--var9.offset; // L: 175
 						}
 
-						var27 = new String(var9.array, 0, var9.offset); // L: 177
+						var27 = new String(var9.payload, 0, var9.offset); // L: 177
 						if (Occluder.method4484(var27)) { // L: 178
 							class91.openURL(var27, true, false); // L: 179
 							return 2; // L: 180
@@ -288,9 +288,9 @@ public class class1 implements Callable {
 					int var12 = HealthBarDefinition.localPlayer.y - var10 >> 7; // L: 4130
 					PacketBufferNode var13 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2749, Client.packetWriter.isaacCipher); // L: 4132
 					var13.packetBuffer.writeByte(18); // L: 4133
-					var13.packetBuffer.method6962(var11 + class19.baseX); // L: 4134
+					var13.packetBuffer.writeShortAdd(var11 + class19.baseX); // L: 4134
 					var13.packetBuffer.method6993(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0); // L: 4135
-					var13.packetBuffer.method7003(var12 + DefaultsGroup.baseY); // L: 4136
+					var13.packetBuffer.writeShortAddLE(var12 + DefaultsGroup.baseY); // L: 4136
 					var13.packetBuffer.writeByte(var4); // L: 4137
 					var13.packetBuffer.writeByte(var5); // L: 4138
 					var13.packetBuffer.writeShort(Client.camAngleY); // L: 4139

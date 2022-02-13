@@ -292,7 +292,7 @@ public final class Player extends Actor {
 
 		class150[] var12 = null; // L: 111
 		boolean var13 = false; // L: 112
-		if (var1.offset < var1.array.length) { // L: 113
+		if (var1.offset < var1.payload.length) { // L: 113
 			var8 = var1.readUnsignedShort(); // L: 114
 			var13 = (var8 >> 15 & 1) == 1; // L: 115
 			if (var8 > 0 && var8 != 32768) { // L: 116

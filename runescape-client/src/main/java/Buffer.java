@@ -16,7 +16,7 @@ public class Buffer extends Node {
 	static long[] crc64Table;
 	@ObfuscatedName("p")
 	@Export("array")
-	public byte[] array;
+	public byte[] payload;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
 		intValue = 1120023427
@@ -61,12 +61,12 @@ public class Buffer extends Node {
 	} // L: 44
 
 	public Buffer(int var1) {
-		this.array = class194.ByteArrayPool_getArray(var1); // L: 69
+		this.payload = class194.ByteArrayPool_getArray(var1); // L: 69
 		this.offset = 0; // L: 70
 	} // L: 71
 
 	public Buffer(byte[] var1) {
-		this.array = var1; // L: 74
+		this.payload = var1; // L: 74
 		this.offset = 0; // L: 75
 	} // L: 76
 
@@ -77,11 +77,11 @@ public class Buffer extends Node {
 	)
 	@Export("releaseArray")
 	public void releaseArray() {
-		if (this.array != null) { // L: 79
-			InvDefinition.ByteArrayPool_release(this.array);
+		if (this.payload != null) { // L: 79
+			InvDefinition.ByteArrayPool_release(this.payload);
 		}
 
-		this.array = null; // L: 80
+		this.payload = null; // L: 80
 	} // L: 81
 
 	@ObfuscatedName("ad")
@@ -91,7 +91,7 @@ public class Buffer extends Node {
 	)
 	@Export("writeByte")
 	public void writeByte(int var1) {
-		this.array[++this.offset - 1] = (byte)var1; // L: 84
+		this.payload[++this.offset - 1] = (byte)var1; // L: 84
 	} // L: 85
 
 	@ObfuscatedName("an")
@@ -101,8 +101,8 @@ public class Buffer extends Node {
 	)
 	@Export("writeShort")
 	public void writeShort(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 88
-		this.array[++this.offset - 1] = (byte)var1; // L: 89
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 88
+		this.payload[++this.offset - 1] = (byte)var1; // L: 89
 	} // L: 90
 
 	@ObfuscatedName("ax")
@@ -112,9 +112,9 @@ public class Buffer extends Node {
 	)
 	@Export("writeMedium")
 	public void writeMedium(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 93
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 94
-		this.array[++this.offset - 1] = (byte)var1; // L: 95
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 93
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 94
+		this.payload[++this.offset - 1] = (byte)var1; // L: 95
 	} // L: 96
 
 	@ObfuscatedName("av")
@@ -124,34 +124,34 @@ public class Buffer extends Node {
 	)
 	@Export("writeInt")
 	public void writeInt(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 99
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 100
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 101
-		this.array[++this.offset - 1] = (byte)var1; // L: 102
+		this.payload[++this.offset - 1] = (byte)(var1 >> 24); // L: 99
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 100
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 101
+		this.payload[++this.offset - 1] = (byte)var1; // L: 102
 	} // L: 103
 
 	@ObfuscatedName("ap")
 	@Export("writeLongMedium")
 	public void writeLongMedium(long var1) {
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 106
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 32)); // L: 107
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 24)); // L: 108
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 16)); // L: 109
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 8)); // L: 110
-		this.array[++this.offset - 1] = (byte)((int)var1); // L: 111
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 106
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 32)); // L: 107
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 24)); // L: 108
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 16)); // L: 109
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 8)); // L: 110
+		this.payload[++this.offset - 1] = (byte)((int)var1); // L: 111
 	} // L: 112
 
 	@ObfuscatedName("au")
 	@Export("writeLong")
 	public void writeLong(long var1) {
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 56)); // L: 115
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 48)); // L: 116
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 117
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 32)); // L: 118
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 24)); // L: 119
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 16)); // L: 120
-		this.array[++this.offset - 1] = (byte)((int)(var1 >> 8)); // L: 121
-		this.array[++this.offset - 1] = (byte)((int)var1); // L: 122
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 56)); // L: 115
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 48)); // L: 116
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 117
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 32)); // L: 118
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 24)); // L: 119
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 16)); // L: 120
+		this.payload[++this.offset - 1] = (byte)((int)(var1 >> 8)); // L: 121
+		this.payload[++this.offset - 1] = (byte)((int)var1); // L: 122
 	} // L: 123
 
 	@ObfuscatedName("aj")
@@ -175,8 +175,8 @@ public class Buffer extends Node {
 		if (var2 >= 0) { // L: 135
 			throw new IllegalArgumentException("");
 		} else {
-			this.offset += class280.encodeStringCp1252(var1, 0, var1.length(), this.array, this.offset); // L: 136
-			this.array[++this.offset - 1] = 0; // L: 137
+			this.offset += class280.encodeStringCp1252(var1, 0, var1.length(), this.payload, this.offset); // L: 136
+			this.payload[++this.offset - 1] = 0; // L: 137
 		}
 	} // L: 138
 
@@ -191,9 +191,9 @@ public class Buffer extends Node {
 		if (var2 >= 0) { // L: 142
 			throw new IllegalArgumentException("");
 		} else {
-			this.array[++this.offset - 1] = 0; // L: 143
-			this.offset += class280.encodeStringCp1252(var1, 0, var1.length(), this.array, this.offset); // L: 144
-			this.array[++this.offset - 1] = 0; // L: 145
+			this.payload[++this.offset - 1] = 0; // L: 143
+			this.offset += class280.encodeStringCp1252(var1, 0, var1.length(), this.payload, this.offset); // L: 144
+			this.payload[++this.offset - 1] = 0; // L: 145
 		}
 	} // L: 146
 
@@ -219,10 +219,10 @@ public class Buffer extends Node {
 			}
 		}
 
-		this.array[++this.offset - 1] = 0; // L: 162
+		this.payload[++this.offset - 1] = 0; // L: 162
 		this.writeVarInt(var4); // L: 163
 		var4 = this.offset * -288034005; // L: 164
-		byte[] var6 = this.array; // L: 166
+		byte[] var6 = this.payload; // L: 166
 		int var7 = this.offset; // L: 167
 		int var8 = var1.length(); // L: 169
 		int var9 = var7; // L: 170
@@ -253,7 +253,7 @@ public class Buffer extends Node {
 	@Export("writeBytes")
 	public void writeBytes(byte[] var1, int var2, int var3) {
 		for (int var4 = var2; var4 < var3 + var2; ++var4) { // L: 192
-			this.array[++this.offset - 1] = var1[var4];
+			this.payload[++this.offset - 1] = var1[var4];
 		}
 
 	} // L: 193
@@ -264,7 +264,7 @@ public class Buffer extends Node {
 		garbageValue = "-1147634113"
 	)
 	public void method6960(Buffer var1) {
-		this.writeBytes(var1.array, 0, var1.offset); // L: 196
+		this.writeBytes(var1.payload, 0, var1.offset); // L: 196
 	} // L: 197
 
 	@ObfuscatedName("bl")
@@ -277,10 +277,10 @@ public class Buffer extends Node {
 		if (var1 < 0) { // L: 200
 			throw new IllegalArgumentException(); // L: 201
 		} else {
-			this.array[this.offset - var1 - 4] = (byte)(var1 >> 24); // L: 203
-			this.array[this.offset - var1 - 3] = (byte)(var1 >> 16); // L: 204
-			this.array[this.offset - var1 - 2] = (byte)(var1 >> 8); // L: 205
-			this.array[this.offset - var1 - 1] = (byte)var1; // L: 206
+			this.payload[this.offset - var1 - 4] = (byte)(var1 >> 24); // L: 203
+			this.payload[this.offset - var1 - 3] = (byte)(var1 >> 16); // L: 204
+			this.payload[this.offset - var1 - 2] = (byte)(var1 >> 8); // L: 205
+			this.payload[this.offset - var1 - 1] = (byte)var1; // L: 206
 		}
 	} // L: 207
 
@@ -292,8 +292,8 @@ public class Buffer extends Node {
 	@Export("writeLengthShort")
 	public void writeLengthShort(int var1) {
 		if (var1 >= 0 && var1 <= 65535) { // L: 210
-			this.array[this.offset - var1 - 2] = (byte)(var1 >> 8); // L: 213
-			this.array[this.offset - var1 - 1] = (byte)var1; // L: 214
+			this.payload[this.offset - var1 - 2] = (byte)(var1 >> 8); // L: 213
+			this.payload[this.offset - var1 - 1] = (byte)var1; // L: 214
 		} else {
 			throw new IllegalArgumentException(); // L: 211
 		}
@@ -306,7 +306,7 @@ public class Buffer extends Node {
 	)
 	public void method6963(int var1) {
 		if (var1 >= 0 && var1 <= 255) { // L: 218
-			this.array[this.offset - var1 - 1] = (byte)var1; // L: 221
+			this.payload[this.offset - var1 - 1] = (byte)var1; // L: 221
 		} else {
 			throw new IllegalArgumentException(); // L: 219
 		}
@@ -361,7 +361,7 @@ public class Buffer extends Node {
 	)
 	@Export("readUnsignedByte")
 	public int readUnsignedByte() {
-		return this.array[++this.offset - 1] & 255; // L: 251
+		return this.payload[++this.offset - 1] & 255; // L: 251
 	}
 
 	@ObfuscatedName("bm")
@@ -371,7 +371,7 @@ public class Buffer extends Node {
 	)
 	@Export("readByte")
 	public byte readByte() {
-		return this.array[++this.offset - 1]; // L: 255
+		return this.payload[++this.offset - 1]; // L: 255
 	}
 
 	@ObfuscatedName("br")
@@ -382,7 +382,7 @@ public class Buffer extends Node {
 	@Export("readUnsignedShort")
 	public int readUnsignedShort() {
 		this.offset += 2; // L: 259
-		return (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 260
+		return (this.payload[this.offset - 1] & 255) + ((this.payload[this.offset - 2] & 255) << 8); // L: 260
 	}
 
 	@ObfuscatedName("bj")
@@ -393,7 +393,7 @@ public class Buffer extends Node {
 	@Export("readShort")
 	public int readShort() {
 		this.offset += 2; // L: 264
-		int var1 = (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 265
+		int var1 = (this.payload[this.offset - 1] & 255) + ((this.payload[this.offset - 2] & 255) << 8); // L: 265
 		if (var1 > 32767) { // L: 266
 			var1 -= 65536;
 		}
@@ -409,7 +409,7 @@ public class Buffer extends Node {
 	@Export("readMedium")
 	public int readMedium() {
 		this.offset += 3; // L: 271
-		return ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 272
+		return ((this.payload[this.offset - 3] & 255) << 16) + (this.payload[this.offset - 1] & 255) + ((this.payload[this.offset - 2] & 255) << 8); // L: 272
 	}
 
 	@ObfuscatedName("bv")
@@ -420,7 +420,7 @@ public class Buffer extends Node {
 	@Export("readInt")
 	public int readInt() {
 		this.offset += 4; // L: 276
-		return ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8) + ((this.array[this.offset - 4] & 255) << 24); // L: 277
+		return ((this.payload[this.offset - 3] & 255) << 16) + (this.payload[this.offset - 1] & 255) + ((this.payload[this.offset - 2] & 255) << 8) + ((this.payload[this.offset - 4] & 255) << 24); // L: 277
 	}
 
 	@ObfuscatedName("bu")
@@ -452,7 +452,7 @@ public class Buffer extends Node {
 	)
 	@Export("readStringCp1252NullTerminatedOrNull")
 	public String readStringCp1252NullTerminatedOrNull() {
-		if (this.array[this.offset] == 0) { // L: 291
+		if (this.payload[this.offset] == 0) { // L: 291
 			++this.offset; // L: 292
 			return null; // L: 293
 		} else {
@@ -469,11 +469,11 @@ public class Buffer extends Node {
 	public String readStringCp1252NullTerminated() {
 		int var1 = this.offset; // L: 299
 
-		while (this.array[++this.offset - 1] != 0) { // L: 300
+		while (this.payload[++this.offset - 1] != 0) { // L: 300
 		}
 
 		int var2 = this.offset - var1 - 1; // L: 301
-		return var2 == 0 ? "" : class264.decodeStringCp1252(this.array, var1, var2); // L: 302 303
+		return var2 == 0 ? "" : class264.decodeStringCp1252(this.payload, var1, var2); // L: 302 303
 	}
 
 	@ObfuscatedName("bk")
@@ -483,17 +483,17 @@ public class Buffer extends Node {
 	)
 	@Export("readStringCp1252NullCircumfixed")
 	public String readStringCp1252NullCircumfixed() {
-		byte var1 = this.array[++this.offset - 1]; // L: 307
+		byte var1 = this.payload[++this.offset - 1]; // L: 307
 		if (var1 != 0) { // L: 308
 			throw new IllegalStateException("");
 		} else {
 			int var2 = this.offset; // L: 309
 
-			while (this.array[++this.offset - 1] != 0) { // L: 310
+			while (this.payload[++this.offset - 1] != 0) { // L: 310
 			}
 
 			int var3 = this.offset - var2 - 1; // L: 311
-			return var3 == 0 ? "" : class264.decodeStringCp1252(this.array, var2, var3); // L: 312 313
+			return var3 == 0 ? "" : class264.decodeStringCp1252(this.payload, var2, var3); // L: 312 313
 		}
 	}
 
@@ -504,15 +504,15 @@ public class Buffer extends Node {
 	)
 	@Export("readCESU8")
 	public String readCESU8() {
-		byte var1 = this.array[++this.offset - 1]; // L: 317
+		byte var1 = this.payload[++this.offset - 1]; // L: 317
 		if (var1 != 0) { // L: 318
 			throw new IllegalStateException("");
 		} else {
 			int var2 = this.readVarInt(); // L: 319
-			if (var2 + this.offset > this.array.length) { // L: 320
+			if (var2 + this.offset > this.payload.length) { // L: 320
 				throw new IllegalStateException("");
 			} else {
-				byte[] var4 = this.array; // L: 322
+				byte[] var4 = this.payload; // L: 322
 				int var5 = this.offset; // L: 323
 				char[] var6 = new char[var2]; // L: 325
 				int var7 = 0; // L: 326
@@ -578,7 +578,7 @@ public class Buffer extends Node {
 	@Export("readBytes")
 	public void readBytes(byte[] var1, int var2, int var3) {
 		for (int var4 = var2; var4 < var3 + var2; ++var4) {
-			var1[var4] = this.array[++this.offset - 1]; // L: 370
+			var1[var4] = this.payload[++this.offset - 1]; // L: 370
 		}
 
 	} // L: 371
@@ -590,7 +590,7 @@ public class Buffer extends Node {
 	)
 	@Export("readShortSmart")
 	public int readShortSmart() {
-		int var1 = this.array[this.offset] & 255; // L: 374
+		int var1 = this.payload[this.offset] & 255; // L: 374
 		return var1 < 128 ? this.readUnsignedByte() - 64 : this.readUnsignedShort() - 49152; // L: 375 376
 	}
 
@@ -601,7 +601,7 @@ public class Buffer extends Node {
 	)
 	@Export("readUShortSmart")
 	public int readUShortSmart() {
-		int var1 = this.array[this.offset] & 255; // L: 380
+		int var1 = this.payload[this.offset] & 255; // L: 380
 		return var1 < 128 ? this.readUnsignedByte() : this.readUnsignedShort() - 32768; // L: 381 382
 	}
 
@@ -628,7 +628,7 @@ public class Buffer extends Node {
 		garbageValue = "1825334288"
 	)
 	public int method6982() {
-		return this.array[this.offset] < 0 ? this.readInt() & Integer.MAX_VALUE : this.readUnsignedShort(); // L: 397 398
+		return this.payload[this.offset] < 0 ? this.readInt() & Integer.MAX_VALUE : this.readUnsignedShort(); // L: 397 398
 	}
 
 	@ObfuscatedName("bq")
@@ -637,7 +637,7 @@ public class Buffer extends Node {
 		garbageValue = "74"
 	)
 	public int method6946() {
-		if (this.array[this.offset] < 0) { // L: 402
+		if (this.payload[this.offset] < 0) { // L: 402
 			return this.readInt() & Integer.MAX_VALUE;
 		} else {
 			int var1 = this.readUnsignedShort(); // L: 403
@@ -652,10 +652,10 @@ public class Buffer extends Node {
 	)
 	@Export("readVarInt")
 	public int readVarInt() {
-		byte var1 = this.array[++this.offset - 1]; // L: 409
+		byte var1 = this.payload[++this.offset - 1]; // L: 409
 
 		int var2;
-		for (var2 = 0; var1 < 0; var1 = this.array[++this.offset - 1]) { // L: 410 411 413
+		for (var2 = 0; var1 < 0; var1 = this.payload[++this.offset - 1]) { // L: 410 411 413
 			var2 = (var2 | var1 & 127) << 7; // L: 412
 		}
 
@@ -804,7 +804,7 @@ public class Buffer extends Node {
 	)
 	@Export("writeCrc")
 	public int writeCrc(int var1) {
-		int var2 = class117.method2565(this.array, var1, this.offset); // L: 516
+		int var2 = class117.method2565(this.payload, var1, this.offset); // L: 516
 		this.writeInt(var2); // L: 517
 		return var2; // L: 518
 	}
@@ -817,7 +817,7 @@ public class Buffer extends Node {
 	@Export("checkCrc")
 	public boolean checkCrc() {
 		this.offset -= 4; // L: 522
-		int var1 = class117.method2565(this.array, 0, this.offset); // L: 523
+		int var1 = class117.method2565(this.payload, 0, this.offset); // L: 523
 		int var2 = this.readInt(); // L: 524
 		return var1 == var2; // L: 525
 	}
@@ -828,7 +828,7 @@ public class Buffer extends Node {
 		garbageValue = "-803217558"
 	)
 	public void method7171(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 + 128); // L: 530
+		this.payload[++this.offset - 1] = (byte)(var1 + 128); // L: 530
 	} // L: 531
 
 	@ObfuscatedName("cl")
@@ -837,7 +837,7 @@ public class Buffer extends Node {
 		garbageValue = "1557647527"
 	)
 	public void method6993(int var1) {
-		this.array[++this.offset - 1] = (byte)(0 - var1); // L: 534
+		this.payload[++this.offset - 1] = (byte)(0 - var1); // L: 534
 	} // L: 535
 
 	@ObfuscatedName("cs")
@@ -846,7 +846,7 @@ public class Buffer extends Node {
 		garbageValue = "27"
 	)
 	public void method6947(int var1) {
-		this.array[++this.offset - 1] = (byte)(128 - var1); // L: 538
+		this.payload[++this.offset - 1] = (byte)(128 - var1); // L: 538
 	} // L: 539
 
 	@ObfuscatedName("ce")
@@ -855,7 +855,7 @@ public class Buffer extends Node {
 		garbageValue = "-933914321"
 	)
 	public int method6995() {
-		return this.array[++this.offset - 1] - 128 & 255; // L: 542
+		return this.payload[++this.offset - 1] - 128 & 255; // L: 542
 	}
 
 	@ObfuscatedName("cp")
@@ -863,8 +863,8 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "-1659267158"
 	)
-	public int method6996() {
-		return 0 - this.array[++this.offset - 1] & 255; // L: 546
+	public int readUnsignedByteNeg() {
+		return 0 - this.payload[++this.offset - 1] & 255; // L: 546
 	}
 
 	@ObfuscatedName("cg")
@@ -873,7 +873,7 @@ public class Buffer extends Node {
 		garbageValue = "299017"
 	)
 	public int method6997() {
-		return 128 - this.array[++this.offset - 1] & 255; // L: 550
+		return 128 - this.payload[++this.offset - 1] & 255; // L: 550
 	}
 
 	@ObfuscatedName("cw")
@@ -882,7 +882,7 @@ public class Buffer extends Node {
 		garbageValue = "-466550700"
 	)
 	public byte method6973() {
-		return (byte)(this.array[++this.offset - 1] - 128); // L: 554
+		return (byte)(this.payload[++this.offset - 1] - 128); // L: 554
 	}
 
 	@ObfuscatedName("cr")
@@ -891,7 +891,7 @@ public class Buffer extends Node {
 		garbageValue = "-1366587411"
 	)
 	public byte method6999() {
-		return (byte)(0 - this.array[++this.offset - 1]); // L: 558
+		return (byte)(0 - this.payload[++this.offset - 1]); // L: 558
 	}
 
 	@ObfuscatedName("cu")
@@ -900,7 +900,7 @@ public class Buffer extends Node {
 		garbageValue = "1916872137"
 	)
 	public byte method7128() {
-		return (byte)(128 - this.array[++this.offset - 1]); // L: 562
+		return (byte)(128 - this.payload[++this.offset - 1]); // L: 562
 	}
 
 	@ObfuscatedName("cc")
@@ -908,9 +908,9 @@ public class Buffer extends Node {
 		descriptor = "(II)V",
 		garbageValue = "-355235162"
 	)
-	public void method7001(int var1) {
-		this.array[++this.offset - 1] = (byte)var1; // L: 566
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 567
+	public void writeShortLE(int var1) {
+		this.payload[++this.offset - 1] = (byte)var1; // L: 566
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 567
 	} // L: 568
 
 	@ObfuscatedName("ch")
@@ -918,9 +918,9 @@ public class Buffer extends Node {
 		descriptor = "(IB)V",
 		garbageValue = "1"
 	)
-	public void method6962(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 571
-		this.array[++this.offset - 1] = (byte)(var1 + 128); // L: 572
+	public void writeShortAdd(int var1) {
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 571
+		this.payload[++this.offset - 1] = (byte)(var1 + 128); // L: 572
 	} // L: 573
 
 	@ObfuscatedName("cz")
@@ -928,9 +928,9 @@ public class Buffer extends Node {
 		descriptor = "(II)V",
 		garbageValue = "-2013527897"
 	)
-	public void method7003(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 + 128); // L: 576
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 577
+	public void writeShortAddLE(int var1) {
+		this.payload[++this.offset - 1] = (byte)(var1 + 128); // L: 576
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 577
 	} // L: 578
 
 	@ObfuscatedName("cv")
@@ -940,7 +940,7 @@ public class Buffer extends Node {
 	)
 	public int method7004() {
 		this.offset += 2; // L: 581
-		return ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255); // L: 582
+		return ((this.payload[this.offset - 1] & 255) << 8) + (this.payload[this.offset - 2] & 255); // L: 582
 	}
 
 	@ObfuscatedName("cf")
@@ -948,9 +948,9 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "1756257139"
 	)
-	public int method7120() {
+	public int readUnsignedShortAdd() {
 		this.offset += 2; // L: 586
-		return (this.array[this.offset - 1] - 128 & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 587
+		return (this.payload[this.offset - 1] - 128 & 255) + ((this.payload[this.offset - 2] & 255) << 8); // L: 587
 	}
 
 	@ObfuscatedName("cm")
@@ -960,7 +960,7 @@ public class Buffer extends Node {
 	)
 	public int method7006() {
 		this.offset += 2; // L: 591
-		return ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] - 128 & 255); // L: 592
+		return ((this.payload[this.offset - 1] & 255) << 8) + (this.payload[this.offset - 2] - 128 & 255); // L: 592
 	}
 
 	@ObfuscatedName("co")
@@ -970,7 +970,7 @@ public class Buffer extends Node {
 	)
 	public int method7007() {
 		this.offset += 2; // L: 596
-		int var1 = ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255); // L: 597
+		int var1 = ((this.payload[this.offset - 1] & 255) << 8) + (this.payload[this.offset - 2] & 255); // L: 597
 		if (var1 > 32767) { // L: 598
 			var1 -= 65536;
 		}
@@ -985,7 +985,7 @@ public class Buffer extends Node {
 	)
 	public int method7008() {
 		this.offset += 2; // L: 603
-		int var1 = (this.array[this.offset - 1] - 128 & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 604
+		int var1 = (this.payload[this.offset - 1] - 128 & 255) + ((this.payload[this.offset - 2] & 255) << 8); // L: 604
 		if (var1 > 32767) { // L: 605
 			var1 -= 65536;
 		}
@@ -999,9 +999,9 @@ public class Buffer extends Node {
 		garbageValue = "-410665583"
 	)
 	public void method7009(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 610
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 611
-		this.array[++this.offset - 1] = (byte)var1; // L: 612
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 610
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 611
+		this.payload[++this.offset - 1] = (byte)var1; // L: 612
 	} // L: 613
 
 	@ObfuscatedName("dq")
@@ -1010,10 +1010,10 @@ public class Buffer extends Node {
 		garbageValue = "-33"
 	)
 	public void method7010(int var1) {
-		this.array[++this.offset - 1] = (byte)var1; // L: 616
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 617
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 618
-		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 619
+		this.payload[++this.offset - 1] = (byte)var1; // L: 616
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 617
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 618
+		this.payload[++this.offset - 1] = (byte)(var1 >> 24); // L: 619
 	} // L: 620
 
 	@ObfuscatedName("df")
@@ -1023,10 +1023,10 @@ public class Buffer extends Node {
 	)
 	@Export("writeIntME")
 	public void writeIntME(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 623
-		this.array[++this.offset - 1] = (byte)var1; // L: 624
-		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 625
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 626
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 623
+		this.payload[++this.offset - 1] = (byte)var1; // L: 624
+		this.payload[++this.offset - 1] = (byte)(var1 >> 24); // L: 625
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 626
 	} // L: 627
 
 	@ObfuscatedName("da")
@@ -1035,10 +1035,10 @@ public class Buffer extends Node {
 		garbageValue = "-1701296195"
 	)
 	public void method7126(int var1) {
-		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 630
-		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 631
-		this.array[++this.offset - 1] = (byte)var1; // L: 632
-		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 633
+		this.payload[++this.offset - 1] = (byte)(var1 >> 16); // L: 630
+		this.payload[++this.offset - 1] = (byte)(var1 >> 24); // L: 631
+		this.payload[++this.offset - 1] = (byte)var1; // L: 632
+		this.payload[++this.offset - 1] = (byte)(var1 >> 8); // L: 633
 	} // L: 634
 
 	@ObfuscatedName("dw")
@@ -1046,9 +1046,9 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "268268119"
 	)
-	public int method7044() {
+	public int readIntLE() {
 		this.offset += 4; // L: 637
-		return (this.array[this.offset - 4] & 255) + ((this.array[this.offset - 3] & 255) << 8) + ((this.array[this.offset - 2] & 255) << 16) + ((this.array[this.offset - 1] & 255) << 24); // L: 638
+		return (this.payload[this.offset - 4] & 255) + ((this.payload[this.offset - 3] & 255) << 8) + ((this.payload[this.offset - 2] & 255) << 16) + ((this.payload[this.offset - 1] & 255) << 24); // L: 638
 	}
 
 	@ObfuscatedName("dn")
@@ -1056,9 +1056,9 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "1588382751"
 	)
-	public int method7021() {
+	public int readIntIME() {
 		this.offset += 4; // L: 642
-		return ((this.array[this.offset - 2] & 255) << 24) + ((this.array[this.offset - 4] & 255) << 8) + (this.array[this.offset - 3] & 255) + ((this.array[this.offset - 1] & 255) << 16); // L: 643
+		return ((this.payload[this.offset - 2] & 255) << 24) + ((this.payload[this.offset - 4] & 255) << 8) + (this.payload[this.offset - 3] & 255) + ((this.payload[this.offset - 1] & 255) << 16); // L: 643
 	}
 
 	@ObfuscatedName("dc")
@@ -1066,9 +1066,9 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "-502850525"
 	)
-	public int method7015() {
+	public int readIntME() {
 		this.offset += 4; // L: 647
-		return ((this.array[this.offset - 1] & 255) << 8) + ((this.array[this.offset - 4] & 255) << 16) + (this.array[this.offset - 2] & 255) + ((this.array[this.offset - 3] & 255) << 24); // L: 648
+		return ((this.payload[this.offset - 1] & 255) << 8) + ((this.payload[this.offset - 4] & 255) << 16) + (this.payload[this.offset - 2] & 255) + ((this.payload[this.offset - 3] & 255) << 24); // L: 648
 	}
 
 	@ObfuscatedName("dh")
@@ -1078,7 +1078,7 @@ public class Buffer extends Node {
 	)
 	public void method7131(byte[] var1, int var2, int var3) {
 		for (int var4 = var3 + var2 - 1; var4 >= var2; --var4) { // L: 652
-			var1[var4] = this.array[++this.offset - 1];
+			var1[var4] = this.payload[++this.offset - 1];
 		}
 
 	} // L: 653
@@ -1088,9 +1088,9 @@ public class Buffer extends Node {
 		descriptor = "([BIIB)V",
 		garbageValue = "-86"
 	)
-	public void method7017(byte[] var1, int var2, int var3) {
+	public void readBytesAdd(byte[] var1, int var2, int var3) {
 		for (int var4 = var2; var4 < var3 + var2; ++var4) {
-			var1[var4] = (byte)(this.array[++this.offset - 1] - 128); // L: 656
+			var1[var4] = (byte)(this.payload[++this.offset - 1] - 128); // L: 656
 		}
 
 	} // L: 657

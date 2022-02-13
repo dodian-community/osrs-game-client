@@ -2906,7 +2906,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							var6 = new Buffer(4); // L: 1733
 							var6.writeByte(1); // L: 1734
 							var6.writeMedium((int)var5.key); // L: 1735
-							NetCache.NetCache_socket.write(var6.array, 0, 4); // L: 1736
+							NetCache.NetCache_socket.write(var6.payload, 0, 4); // L: 1736
 							NetCache.NetCache_pendingPriorityResponses.put(var5, var5.key); // L: 1737
 							--NetCache.NetCache_pendingPriorityWritesCount; // L: 1738
 							++NetCache.NetCache_pendingPriorityResponsesCount; // L: 1739
@@ -2917,7 +2917,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							var6 = new Buffer(4); // L: 1743
 							var6.writeByte(0); // L: 1744
 							var6.writeMedium((int)var5.key); // L: 1745
-							NetCache.NetCache_socket.write(var6.array, 0, 4); // L: 1746
+							NetCache.NetCache_socket.write(var6.payload, 0, 4); // L: 1746
 							var5.removeDual(); // L: 1747
 							NetCache.NetCache_pendingResponses.put(var5, var5.key); // L: 1748
 							--NetCache.NetCache_pendingWritesCount; // L: 1749
@@ -2955,10 +2955,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 									var8 = var18;
 								}
 
-								NetCache.NetCache_socket.read(NetCache.NetCache_responseHeaderBuffer.array, NetCache.NetCache_responseHeaderBuffer.offset, var8); // L: 1763
+								NetCache.NetCache_socket.read(NetCache.NetCache_responseHeaderBuffer.payload, NetCache.NetCache_responseHeaderBuffer.offset, var8); // L: 1763
 								if (NetCache.field3719 != 0) { // L: 1764
 									for (var9 = 0; var9 < var8; ++var9) { // L: 1765
-										var10000 = NetCache.NetCache_responseHeaderBuffer.array;
+										var10000 = NetCache.NetCache_responseHeaderBuffer.payload;
 										var10001 = var9 + NetCache.NetCache_responseHeaderBuffer.offset;
 										var10000[var10001] ^= NetCache.field3719;
 									}
@@ -2996,7 +2996,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 									NetCache.field3707 = 8; // L: 1790
 									NetCache.NetCache_responseHeaderBuffer.offset = 0; // L: 1791
 								} else if (NetCache.field3707 == 0) { // L: 1794
-									if (NetCache.NetCache_responseHeaderBuffer.array[0] == -1) { // L: 1795
+									if (NetCache.NetCache_responseHeaderBuffer.payload[0] == -1) { // L: 1795
 										NetCache.field3707 = 1; // L: 1796
 										NetCache.NetCache_responseHeaderBuffer.offset = 0; // L: 1797
 									} else {
@@ -3004,7 +3004,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 									}
 								}
 							} else {
-								var8 = class138.NetCache_responseArchiveBuffer.array.length - class131.NetCache_currentResponse.padding; // L: 1807
+								var8 = class138.NetCache_responseArchiveBuffer.payload.length - class131.NetCache_currentResponse.padding; // L: 1807
 								var9 = 512 - NetCache.field3707; // L: 1808
 								if (var9 > var8 - class138.NetCache_responseArchiveBuffer.offset) { // L: 1809
 									var9 = var8 - class138.NetCache_responseArchiveBuffer.offset;
@@ -3014,10 +3014,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 									var9 = var18;
 								}
 
-								NetCache.NetCache_socket.read(class138.NetCache_responseArchiveBuffer.array, class138.NetCache_responseArchiveBuffer.offset, var9); // L: 1811
+								NetCache.NetCache_socket.read(class138.NetCache_responseArchiveBuffer.payload, class138.NetCache_responseArchiveBuffer.offset, var9); // L: 1811
 								if (NetCache.field3719 != 0) { // L: 1812
 									for (var10 = 0; var10 < var9; ++var10) { // L: 1813
-										var10000 = class138.NetCache_responseArchiveBuffer.array;
+										var10000 = class138.NetCache_responseArchiveBuffer.payload;
 										var10001 = class138.NetCache_responseArchiveBuffer.offset + var10;
 										var10000[var10001] ^= NetCache.field3719;
 									}
@@ -3041,7 +3041,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 										}
 									} else {
 										NetCache.NetCache_crc.reset(); // L: 1831
-										NetCache.NetCache_crc.update(class138.NetCache_responseArchiveBuffer.array, 0, var8); // L: 1832
+										NetCache.NetCache_crc.update(class138.NetCache_responseArchiveBuffer.payload, 0, var8); // L: 1832
 										var10 = (int)NetCache.NetCache_crc.getValue(); // L: 1833
 										if (var10 != class131.NetCache_currentResponse.crc) { // L: 1834
 											try {
@@ -3058,7 +3058,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 										NetCache.NetCache_crcMismatches = 0; // L: 1845
 										NetCache.NetCache_ioExceptions = 0; // L: 1846
-										class131.NetCache_currentResponse.archive.write((int)(class131.NetCache_currentResponse.key & 65535L), class138.NetCache_responseArchiveBuffer.array, 16711680L == (class131.NetCache_currentResponse.key & 16711680L), class120.field1401); // L: 1847
+										class131.NetCache_currentResponse.archive.write((int)(class131.NetCache_currentResponse.key & 65535L), class138.NetCache_responseArchiveBuffer.payload, 16711680L == (class131.NetCache_currentResponse.key & 16711680L), class120.field1401); // L: 1847
 									}
 
 									class131.NetCache_currentResponse.remove(); // L: 1849
@@ -3152,7 +3152,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						Buffer var1 = new Buffer(5); // L: 1913
 						var1.writeByte(15); // L: 1914
 						var1.writeInt(201); // L: 1915
-						ItemLayer.js5Socket.write(var1.array, 0, 5); // L: 1916
+						ItemLayer.js5Socket.write(var1.payload, 0, 5); // L: 1916
 						++js5ConnectState; // L: 1917
 						Login.field889 = class111.method2516(); // L: 1918
 					}
@@ -3371,7 +3371,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					}
 
 					if (var33 > 0) { // L: 2533
-						((AbstractSocket)var1).read(var2.array, var2.offset, var33); // L: 2534
+						((AbstractSocket)var1).read(var2.payload, var2.offset, var33); // L: 2534
 						var2.offset += var33; // L: 2535
 					}
 				}
@@ -3443,7 +3443,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				var6.packetBuffer.writeInt(1); // L: 2617
 				var6.packetBuffer.writeByte(clientType); // L: 2618
 				var6.packetBuffer.writeByte(field469); // L: 2619
-				var6.packetBuffer.writeBytes(var22.array, 0, var22.offset); // L: 2620
+				var6.packetBuffer.writeBytes(var22.payload, 0, var22.offset); // L: 2620
 				int var8 = var6.packetBuffer.offset; // L: 2621
 				var6.packetBuffer.writeStringCp1252NullTerminated(Login.Login_username); // L: 2622
 				var6.packetBuffer.writeByte((isResizable ? 1 : 0) << 1 | (isLowDetail ? 1 : 0)); // L: 2623
@@ -3461,7 +3461,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				var6.packetBuffer.writeInt(TextureProvider.field2483); // L: 2636
 				Buffer var32 = new Buffer(class54.platformInfo.size()); // L: 2637
 				class54.platformInfo.write(var32); // L: 2638
-				var6.packetBuffer.writeBytes(var32.array, 0, var32.array.length); // L: 2639
+				var6.packetBuffer.writeBytes(var32.payload, 0, var32.payload.length); // L: 2639
 				var6.packetBuffer.writeByte(clientType); // L: 2640
 				var6.packetBuffer.writeInt(0); // L: 2641
 				var6.packetBuffer.method7010(Messages.archive6.hash); // L: 2642
@@ -3527,7 +3527,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 			}
 
 			if (loginState == 7 && ((AbstractSocket)var1).available() >= 2) { // L: 2705 2706
-				((AbstractSocket)var1).read(var2.array, 0, 2); // L: 2707
+				((AbstractSocket)var1).read(var2.payload, 0, 2); // L: 2707
 				var2.offset = 0; // L: 2708
 				class320.field3868 = var2.readUnsignedShort(); // L: 2709
 				UserComparator6.method2503(8); // L: 2710
@@ -3535,7 +3535,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 			if (loginState == 8 && ((AbstractSocket)var1).available() >= class320.field3868) { // L: 2713 2714
 				var2.offset = 0; // L: 2715
-				((AbstractSocket)var1).read(var2.array, var2.offset, class320.field3868); // L: 2716
+				((AbstractSocket)var1).read(var2.payload, var2.offset, class320.field3868); // L: 2716
 				class6 var23 = class135.method2797()[var2.readUnsignedByte()]; // L: 2717
 
 				try {
@@ -3583,7 +3583,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 			}
 
 			if (loginState == 11 && ((AbstractSocket)var1).available() >= VarbitComposition.field1775) { // L: 2777 2778
-				((AbstractSocket)var1).read(var2.array, 0, VarbitComposition.field1775); // L: 2779
+				((AbstractSocket)var1).read(var2.payload, 0, VarbitComposition.field1775); // L: 2779
 				var2.offset = 0; // L: 2780
 				UserComparator6.method2503(6); // L: 2781
 			}
@@ -3610,7 +3610,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				boolean var34;
 				if (loginState == 15 && ((AbstractSocket)var1).available() >= TextureProvider.field2485) { // L: 2802 2803
 					var13 = ((AbstractSocket)var1).readUnsignedByte() == 1; // L: 2804
-					((AbstractSocket)var1).read(var2.array, 0, 4); // L: 2805
+					((AbstractSocket)var1).read(var2.payload, 0, 4); // L: 2805
 					var2.offset = 0; // L: 2806
 					var34 = false; // L: 2807
 					if (var13) { // L: 2808
@@ -3641,7 +3641,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					localPlayerIndex <<= 8; // L: 2833
 					localPlayerIndex += ((AbstractSocket)var1).readUnsignedByte(); // L: 2834
 					field588 = ((AbstractSocket)var1).readUnsignedByte(); // L: 2835
-					((AbstractSocket)var1).read(var2.array, 0, 1); // L: 2836
+					((AbstractSocket)var1).read(var2.payload, 0, 1); // L: 2836
 					var2.offset = 0; // L: 2837
 					ServerPacket[] var5 = class128.ServerPacket_values(); // L: 2838
 					int var16 = var2.readSmartByteShortIsaac(); // L: 2839
@@ -3651,7 +3651,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 					packetWriter.serverPacket = var5[var16]; // L: 2841
 					packetWriter.serverPacketLength = packetWriter.serverPacket.length; // L: 2842
-					((AbstractSocket)var1).read(var2.array, 0, 2); // L: 2843
+					((AbstractSocket)var1).read(var2.payload, 0, 2); // L: 2843
 					var2.offset = 0; // L: 2844
 					packetWriter.serverPacketLength = var2.readUnsignedShort(); // L: 2845
 
@@ -3667,7 +3667,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				if (loginState != 16) { // L: 2857
 					if (loginState == 17 && ((AbstractSocket)var1).available() >= 2) { // L: 2976 2977
 						var2.offset = 0; // L: 2978
-						((AbstractSocket)var1).read(var2.array, 0, 2); // L: 2979
+						((AbstractSocket)var1).read(var2.payload, 0, 2); // L: 2979
 						var2.offset = 0; // L: 2980
 						class122.field1420 = var2.readUnsignedShort(); // L: 2981
 						UserComparator6.method2503(18); // L: 2982
@@ -3675,7 +3675,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 					if (loginState == 18 && ((AbstractSocket)var1).available() >= class122.field1420) { // L: 2985 2986
 						var2.offset = 0; // L: 2987
-						((AbstractSocket)var1).read(var2.array, 0, class122.field1420); // L: 2988
+						((AbstractSocket)var1).read(var2.payload, 0, class122.field1420); // L: 2988
 						var2.offset = 0; // L: 2989
 						String var27 = var2.readStringCp1252NullTerminated(); // L: 2990
 						String var30 = var2.readStringCp1252NullTerminated(); // L: 2991
@@ -3690,13 +3690,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 								return;
 							}
 
-							((AbstractSocket)var1).read(var2.array, 0, 2); // L: 3000
+							((AbstractSocket)var1).read(var2.payload, 0, 2); // L: 3000
 							var2.offset = 0; // L: 3001
 							packetWriter.serverPacketLength = var2.readUnsignedShort(); // L: 3002
 						}
 
 						if (((AbstractSocket)var1).available() >= packetWriter.serverPacketLength) { // L: 3004
-							((AbstractSocket)var1).read(var2.array, 0, packetWriter.serverPacketLength); // L: 3005
+							((AbstractSocket)var1).read(var2.payload, 0, packetWriter.serverPacketLength); // L: 3005
 							var2.offset = 0; // L: 3006
 							var33 = packetWriter.serverPacketLength; // L: 3007
 							timer.method5970(); // L: 3008
@@ -3726,7 +3726,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				} else {
 					if (((AbstractSocket)var1).available() >= packetWriter.serverPacketLength) { // L: 2858
 						var2.offset = 0; // L: 2859
-						((AbstractSocket)var1).read(var2.array, 0, packetWriter.serverPacketLength); // L: 2860
+						((AbstractSocket)var1).read(var2.payload, 0, packetWriter.serverPacketLength); // L: 2860
 						timer.method5974(); // L: 2861
 						mouseLastLastPressedTimeMillis = -1L; // L: 2864
 						Interpreter.mouseRecorder.index = 0; // L: 2865
@@ -4072,10 +4072,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							}
 
 							var5 = (int)var16; // L: 3435
-							var18 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2725, packetWriter.isaacCipher); // L: 3436
-							var18.packetBuffer.writeShort((MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0) + (var5 << 1)); // L: 3437
+							var18 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.mouseClickPacket, packetWriter.isaacCipher); // L: 3436
+							int testingShit = (MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0) + (var5 << 1);
+							var18.packetBuffer.writeShort(testingShit); // L: 3437
 							var18.packetBuffer.writeShort(var4); // L: 3438
 							var18.packetBuffer.writeShort(var3); // L: 3439
+							System.out.println("Something1=" + testingShit + ", Something2=" + var4 + ", Something3=" + var3);
 							packetWriter.addNode(var18); // L: 3440
 						}
 
@@ -4112,8 +4114,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							field620 = 20; // L: 3460
 							field555 = false; // L: 3461
 							var14 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2699, packetWriter.isaacCipher); // L: 3463
-							var14.packetBuffer.method7001(camAngleX); // L: 3464
-							var14.packetBuffer.method7003(camAngleY); // L: 3465
+							var14.packetBuffer.writeShortLE(camAngleX); // L: 3464
+							var14.packetBuffer.writeShortAddLE(camAngleY); // L: 3465
 							packetWriter.addNode(var14); // L: 3466
 						}
 
@@ -4508,8 +4510,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																			}
 
 																			var18 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2669, packetWriter.isaacCipher); // L: 3826
-																			var18.packetBuffer.method7001(dragItemSlotDestination); // L: 3827
-																			var18.packetBuffer.method7003(dragItemSlotSource); // L: 3828
+																			var18.packetBuffer.writeShortLE(dragItemSlotDestination); // L: 3827
+																			var18.packetBuffer.writeShortAddLE(dragItemSlotSource); // L: 3828
 																			var18.packetBuffer.method6993(var39); // L: 3829
 																			var18.packetBuffer.method7010(class247.dragInventoryWidget.id); // L: 3830
 																			packetWriter.addNode(var18); // L: 3831
@@ -4537,9 +4539,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																var5 = Scene.Scene_selectedY; // L: 3864
 																var18 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2703, packetWriter.isaacCipher); // L: 3866
 																var18.packetBuffer.writeByte(5); // L: 3867
-																var18.packetBuffer.method6962(var4 + class19.baseX); // L: 3868
+																var18.packetBuffer.writeShortAdd(var4 + class19.baseX); // L: 3868
 																var18.packetBuffer.method6993(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0); // L: 3869
-																var18.packetBuffer.method7003(var5 + DefaultsGroup.baseY); // L: 3870
+																var18.packetBuffer.writeShortAddLE(var5 + DefaultsGroup.baseY); // L: 3870
 																packetWriter.addNode(var18); // L: 3871
 																Scene.method4451(); // L: 3872
 																mouseCrossX = MouseHandler.MouseHandler_lastPressedX; // L: 3873
@@ -4954,7 +4956,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							return false;
 						}
 
-						var2.read(var1.packetBuffer.array, 0, 1); // L: 6034
+						var2.read(var1.packetBuffer.payload, 0, 1); // L: 6034
 						var1.field1275 = 0; // L: 6035
 						var1.field1280 = false; // L: 6036
 					}
@@ -4965,7 +4967,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							return false;
 						}
 
-						var2.read(var1.packetBuffer.array, 1, 1); // L: 6041
+						var2.read(var1.packetBuffer.payload, 1, 1); // L: 6041
 						var1.field1275 = 0; // L: 6042
 					}
 
@@ -4985,8 +4987,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						return false;
 					}
 
-					var1.getSocket().read(var3.array, 0, 1); // L: 6053
-					var1.serverPacketLength = var3.array[0] & 255; // L: 6054
+					var1.getSocket().read(var3.payload, 0, 1); // L: 6053
+					var1.serverPacketLength = var3.payload[0] & 255; // L: 6054
 				}
 
 				if (var1.serverPacketLength == -2) { // L: 6056
@@ -4994,7 +4996,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						return false;
 					}
 
-					var1.getSocket().read(var3.array, 0, 2); // L: 6058
+					var1.getSocket().read(var3.payload, 0, 2); // L: 6058
 					var3.offset = 0; // L: 6059
 					var1.serverPacketLength = var3.readUnsignedShort(); // L: 6060
 				}
@@ -5004,7 +5006,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				var3.offset = 0; // L: 6063
-				var2.read(var3.array, 0, var1.serverPacketLength); // L: 6064
+				var2.read(var3.payload, 0, var1.serverPacketLength); // L: 6064
 				var1.field1275 = 0; // L: 6065
 				timer.method5972(); // L: 6066
 				var1.field1285 = var1.field1284; // L: 6067
@@ -5014,7 +5016,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				String var53;
 				if (ServerPacket.field2865 == var1.serverPacket) { // L: 6070
 					var17 = var3.method6997(); // L: 6071
-					var5 = var3.method6996(); // L: 6072
+					var5 = var3.readUnsignedByteNeg(); // L: 6072
 					var53 = var3.readStringCp1252NullTerminated(); // L: 6073
 					if (var17 >= 1 && var17 <= 8) { // L: 6074
 						if (var53.equalsIgnoreCase("null")) { // L: 6075
@@ -5095,7 +5097,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				byte var61;
 				if (ServerPacket.field2802 == var1.serverPacket) { // L: 6131
 					var61 = var3.readByte(); // L: 6132
-					var5 = var3.method7120(); // L: 6133
+					var5 = var3.readUnsignedShortAdd(); // L: 6133
 					Varps.Varps_temp[var5] = var61; // L: 6134
 					if (Varps.Varps_main[var5] != var61) { // L: 6135
 						Varps.Varps_main[var5] = var61; // L: 6136
@@ -5331,7 +5333,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2843 == var1.serverPacket) { // L: 6304
-					var17 = var3.method7044(); // L: 6305
+					var17 = var3.readIntLE(); // L: 6305
 					var5 = var3.method7006(); // L: 6306
 					var18 = var5 >> 10 & 31; // L: 6307
 					var7 = var5 >> 5 & 31; // L: 6308
@@ -5382,7 +5384,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2826 == var1.serverPacket) { // L: 6349
-					var17 = var3.method7015(); // L: 6350
+					var17 = var3.readIntME(); // L: 6350
 					var5 = var3.method7004(); // L: 6351
 					var52 = UserComparator9.getWidget(var17); // L: 6352
 					if (var52 != null && var52.type == 0) { // L: 6353
@@ -5427,7 +5429,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				if (ServerPacket.field2845 == var1.serverPacket) { // L: 6382
 					var47 = var3.readStringCp1252NullTerminated(); // L: 6383
-					var5 = var3.method7021(); // L: 6384
+					var5 = var3.readIntIME(); // L: 6384
 					var52 = UserComparator9.getWidget(var5); // L: 6385
 					if (!var47.equals(var52.text)) { // L: 6386
 						var52.text = var47; // L: 6387
@@ -5445,7 +5447,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2861 == var1.serverPacket) { // L: 6398
-					rebootTimer = var3.method7120() * 30; // L: 6399
+					rebootTimer = var3.readUnsignedShortAdd() * 30; // L: 6399
 					field494 = cycleCntr; // L: 6400
 					var1.serverPacket = null; // L: 6401
 					return true; // L: 6402
@@ -5489,7 +5491,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				boolean var56;
 				if (ServerPacket.field2854 == var1.serverPacket) { // L: 6429
-					var17 = var3.method7044(); // L: 6430
+					var17 = var3.readIntLE(); // L: 6430
 					var56 = var3.readUnsignedByte() == 1; // L: 6431
 					var52 = UserComparator9.getWidget(var17); // L: 6432
 					if (var56 != var52.isHidden) { // L: 6433
@@ -5589,7 +5591,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				InterfaceParent var35;
 				if (ServerPacket.field2809 == var1.serverPacket) { // L: 6509
 					var17 = var3.method7006(); // L: 6510
-					var5 = var3.method7015(); // L: 6511
+					var5 = var3.readIntME(); // L: 6511
 					var18 = var3.method6995(); // L: 6512
 					var35 = (InterfaceParent)interfaceParents.get((long)var5); // L: 6513
 					if (var35 != null) { // L: 6514
@@ -5631,9 +5633,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					var7 = var3.readUnsignedShort(); // L: 6538
 
 					for (var8 = 0; var8 < var7; ++var8) { // L: 6539
-						var9 = var3.method6996(); // L: 6540
+						var9 = var3.readUnsignedByteNeg(); // L: 6540
 						if (var9 == 255) { // L: 6541
-							var9 = var3.method7015();
+							var9 = var3.readIntME();
 						}
 
 						var10 = var3.method7004(); // L: 6542
@@ -5676,7 +5678,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					return true; // L: 6569
 				}
 
-				if (ServerPacket.field2839 == var1.serverPacket) { // L: 6571
+				if (ServerPacket.opcode47 == var1.serverPacket) { // L: 6571
 					Canvas.loadRegions(false, var1.packetBuffer); // L: 6572
 					var1.serverPacket = null; // L: 6573
 					return true; // L: 6574
@@ -5710,9 +5712,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				Widget var73;
 				if (ServerPacket.field2842 == var1.serverPacket) { // L: 6597
-					var17 = var3.method7120(); // L: 6598
+					var17 = var3.readUnsignedShortAdd(); // L: 6598
 					var5 = var3.method7004(); // L: 6599
-					var18 = var3.method7021(); // L: 6600
+					var18 = var3.readIntIME(); // L: 6600
 					var73 = UserComparator9.getWidget(var18); // L: 6601
 					var73.field3165 = var5 + (var17 << 16); // L: 6602
 					var1.serverPacket = null; // L: 6603
@@ -5750,7 +5752,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				if (ServerPacket.field2850 == var1.serverPacket) { // L: 6631
 					var17 = var3.method7008(); // L: 6632
-					var5 = var3.method7044(); // L: 6633
+					var5 = var3.readIntLE(); // L: 6633
 					var52 = UserComparator9.getWidget(var5); // L: 6634
 					if (var17 != var52.sequenceId || var17 == -1) { // L: 6635
 						var52.sequenceId = var17; // L: 6636
@@ -5812,9 +5814,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				Widget var36;
-				if (ServerPacket.field2828 == var1.serverPacket) { // L: 6680
-					var17 = var3.method7044(); // L: 6681
-					var5 = var3.method7044(); // L: 6682
+				if (ServerPacket.ifMoveSubPacket == var1.serverPacket) { // L: 6680
+					var17 = var3.readIntLE(); // L: 6681
+					var5 = var3.readIntLE(); // L: 6682
 					InterfaceParent var51 = (InterfaceParent)interfaceParents.get((long)var17); // L: 6683
 					var35 = (InterfaceParent)interfaceParents.get((long)var5); // L: 6684
 					if (var35 != null) { // L: 6685
@@ -5846,7 +5848,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2822 == var1.serverPacket) { // L: 6701
-					publicChatMode = var3.method6996(); // L: 6702
+					publicChatMode = var3.readUnsignedByteNeg(); // L: 6702
 					tradeChatMode = var3.method6997(); // L: 6703
 					var1.serverPacket = null; // L: 6704
 					return true; // L: 6705
@@ -5870,7 +5872,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				if (ServerPacket.field2815 == var1.serverPacket) { // L: 6715
 					ItemComposition.method3406(); // L: 6716
 					var17 = var3.method6997(); // L: 6717
-					var5 = var3.method7015(); // L: 6718
+					var5 = var3.readIntME(); // L: 6718
 					var18 = var3.method6995(); // L: 6719
 					experience[var17] = var5; // L: 6720
 					currentLevels[var17] = var18; // L: 6721
@@ -5903,18 +5905,23 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					return true; // L: 6737
 				}
 
-				if (ServerPacket.field2877 == var1.serverPacket) { // L: 6739
-					var17 = var3.method7021(); // L: 6740
+				if (ServerPacket.ifSetEvents == var1.serverPacket) { // L: 6739
+					var17 = var3.readIntIME(); // L: 6740
 					var5 = var3.readInt(); // L: 6741
 					var18 = var3.readUnsignedShort(); // L: 6742
 					if (var18 == 65535) { // L: 6743
 						var18 = -1;
 					}
 
-					var7 = var3.method7120(); // L: 6744
+					var7 = var3.readUnsignedShortAdd(); // L: 6744
 					if (var7 == 65535) { // L: 6745
 						var7 = -1;
 					}
+
+					System.out.println("Component: " + var17);
+					System.out.println("Events: " + var5);
+					System.out.println("Start: " + var7);
+					System.out.println("End: " + var18);
 
 					for (var8 = var7; var8 <= var18; ++var8) { // L: 6746
 						var37 = (long)var8 + ((long)var5 << 32); // L: 6747
@@ -5971,7 +5978,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				Widget var59;
 				if (ServerPacket.field2794 == var1.serverPacket) { // L: 6783
-					var17 = var3.method7021(); // L: 6784
+					var17 = var3.readIntIME(); // L: 6784
 					var59 = UserComparator9.getWidget(var17); // L: 6785
 					var59.modelType = 3; // L: 6786
 					var59.modelId = HealthBarDefinition.localPlayer.appearance.getChatHeadId(); // L: 6787
@@ -6076,7 +6083,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					}
 
 					var5 = var3.readInt(); // L: 6866
-					var18 = var3.method7015(); // L: 6867
+					var18 = var3.readIntME(); // L: 6867
 					var73 = UserComparator9.getWidget(var5); // L: 6868
 					ItemComposition var74;
 					if (!var73.isIf3) { // L: 6869
@@ -6123,7 +6130,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2880 == var1.serverPacket) { // L: 6902
-					var17 = var3.method7044(); // L: 6903
+					var17 = var3.readIntLE(); // L: 6903
 					var5 = var3.readUnsignedShort(); // L: 6904
 					Varps.Varps_temp[var5] = var17; // L: 6905
 					if (Varps.Varps_main[var5] != var17) { // L: 6906
@@ -6226,7 +6233,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2886 == var1.serverPacket) { // L: 6981
-					var17 = var3.method7015(); // L: 6982
+					var17 = var3.readIntME(); // L: 6982
 					var5 = var3.method7007(); // L: 6983
 					var18 = var3.method7007(); // L: 6984
 					var73 = UserComparator9.getWidget(var17); // L: 6985
@@ -6310,7 +6317,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2810 == var1.serverPacket) { // L: 7046
-					var17 = var3.method7120(); // L: 7047
+					var17 = var3.readUnsignedShortAdd(); // L: 7047
 					if (var17 == 65535) { // L: 7048
 						var17 = -1;
 					}
@@ -6383,7 +6390,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				}
 
 				if (ServerPacket.field2835 == var1.serverPacket) { // L: 7104
-					var17 = var3.method7015(); // L: 7105
+					var17 = var3.readIntME(); // L: 7105
 					var59 = UserComparator9.getWidget(var17); // L: 7106
 
 					for (var18 = 0; var18 < var59.itemIds.length; ++var18) { // L: 7107
@@ -6398,12 +6405,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 				if (ServerPacket.field2840 == var1.serverPacket) { // L: 7115
 					ItemComposition.field1931 = var3.readUnsignedByte(); // L: 7116
-					Actor.field1146 = var3.method6996(); // L: 7117
+					Actor.field1146 = var3.readUnsignedByteNeg(); // L: 7117
 					var1.serverPacket = null; // L: 7118
 					return true; // L: 7119
 				}
 
-				if (ServerPacket.field2830 == var1.serverPacket) { // L: 7121
+				if (ServerPacket.playerInfoPacket == var1.serverPacket) { // L: 7121
 					GameBuild.updatePlayers(var3, var1.serverPacketLength); // L: 7122
 					class279.method5216(); // L: 7123
 					var1.serverPacket = null; // L: 7124
@@ -6420,7 +6427,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					var17 = var3.readUnsignedShort(); // L: 7133
 					var5 = var3.readUnsignedShort(); // L: 7134
 					var18 = var3.readUnsignedShort(); // L: 7135
-					var7 = var3.method7015(); // L: 7136
+					var7 = var3.readIntME(); // L: 7136
 					var36 = UserComparator9.getWidget(var7); // L: 7137
 					if (var17 != var36.modelAngleX || var5 != var36.modelAngleY || var18 != var36.modelZoom) { // L: 7138
 						var36.modelAngleX = var17; // L: 7139
@@ -6497,7 +6504,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				var19 = "" + (var1.serverPacket != null ? var1.serverPacket.id * 1996281945 * -662376471 : -1) + "," + (var1.field1284 != null ? var1.field1284.id * 1996281945 * -662376471 : -1) + "," + (var1.field1285 != null ? var1.field1285.id * 1996281945 * -662376471 : -1) + "," + var1.serverPacketLength + "," + (HealthBarDefinition.localPlayer.pathX[0] + class19.baseX) + "," + (HealthBarDefinition.localPlayer.pathY[0] + DefaultsGroup.baseY) + ","; // L: 7195
 
 				for (var18 = 0; var18 < var1.serverPacketLength && var18 < 50; ++var18) { // L: 7196
-					var19 = var19 + var3.array[var18] + ",";
+					var19 = var19 + var3.payload[var18] + ",";
 				}
 
 				MilliClock.RunException_sendStackTrace(var19, var45); // L: 7197
@@ -6748,11 +6755,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 					if (draggedOnWidget != null && BuddyRankComparator.method2501(clickedWidget) != null) { // L: 11235
 						PacketBufferNode var12 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2727, packetWriter.isaacCipher); // L: 11237
-						var12.packetBuffer.method7001(draggedOnWidget.itemId); // L: 11238
+						var12.packetBuffer.writeShortLE(draggedOnWidget.itemId); // L: 11238
 						var12.packetBuffer.writeShort(draggedOnWidget.childIndex); // L: 11239
-						var12.packetBuffer.method7001(clickedWidget.childIndex); // L: 11240
+						var12.packetBuffer.writeShortLE(clickedWidget.childIndex); // L: 11240
 						var12.packetBuffer.method7126(draggedOnWidget.id); // L: 11241
-						var12.packetBuffer.method7001(clickedWidget.itemId); // L: 11242
+						var12.packetBuffer.writeShortLE(clickedWidget.itemId); // L: 11242
 						var12.packetBuffer.writeIntME(clickedWidget.id); // L: 11243
 						packetWriter.addNode(var12); // L: 11244
 					}

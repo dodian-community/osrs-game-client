@@ -98,7 +98,7 @@ public class ClientPreferences {
 		this.areaSoundEffectsVolume = 127; // L: 21
 		this.field1182 = -1; // L: 22
 		this.parameters = new LinkedHashMap(); // L: 23
-		if (var1 != null && var1.array != null) { // L: 30
+		if (var1 != null && var1.payload != null) { // L: 30
 			int var2 = var1.readUnsignedByte(); // L: 34
 			if (var2 >= 0 && var2 <= ClientPreferences_optionCount) { // L: 35
 				if (var1.readUnsignedByte() == 1) { // L: 39

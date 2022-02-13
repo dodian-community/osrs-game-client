@@ -34,6 +34,7 @@ import com.openosrs.client.game.PlayerManager;
 import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
+import java.math.BigInteger;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.nio.file.Paths;
@@ -92,7 +93,7 @@ import org.slf4j.LoggerFactory;
 @Slf4j
 public class RuneLite
 {
-	public static final File RUNELITE_DIR = new File(System.getProperty("user.home"), ".openosrs");
+	public static final File RUNELITE_DIR = new File(System.getProperty("user.home"), ".dodian_osrs");
 	public static final File CACHE_DIR = new File(RUNELITE_DIR, "cache");
 	public static final File PLUGINS_DIR = new File(RUNELITE_DIR, "plugin-hub");
 	public static final File PROFILES_DIR = new File(RUNELITE_DIR, "profiles");
@@ -179,7 +180,8 @@ public class RuneLite
 
 		final ArgumentAcceptingOptionSpec<Integer> worldInfo = parser
 			.accepts("world")
-			.withRequiredArg().ofType(Integer.class);
+			.withRequiredArg().ofType(Integer.class)
+				.defaultsTo(1);
 
 		final ArgumentAcceptingOptionSpec<File> configfile = parser.accepts("config", "Use a specified config file")
 			.withRequiredArg()

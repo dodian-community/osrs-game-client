@@ -228,7 +228,7 @@ public class Varcs {
 				}
 			}
 
-			var1.write(var26.array, 0, var26.offset); // L: 146
+			var1.write(var26.payload, 0, var26.offset); // L: 146
 		} catch (Exception var24) { // L: 148
 		} finally {
 			try {
@@ -264,7 +264,7 @@ public class Varcs {
 				}
 
 				Buffer var14 = new Buffer(var2); // L: 169
-				if (var14.array.length - var14.offset >= 1) { // L: 170
+				if (var14.payload.length - var14.offset >= 1) { // L: 170
 					int var15 = var14.readUnsignedByte(); // L: 171
 					if (var15 < 0 || var15 > 2) { // L: 172
 						return;

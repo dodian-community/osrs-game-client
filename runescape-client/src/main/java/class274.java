@@ -46,11 +46,11 @@ public final class class274 {
 		garbageValue = "2095914687"
 	)
 	static void method5198(Buffer var0, int var1) {
-		MilliClock.method2954(var0.array, var1); // L: 11985
+		MilliClock.method2954(var0.payload, var1); // L: 11985
 		if (JagexCache.JagexCache_randomDat != null) { // L: 11987
 			try {
 				JagexCache.JagexCache_randomDat.seek(0L); // L: 11989
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24); // L: 11990
+				JagexCache.JagexCache_randomDat.write(var0.payload, var1, 24); // L: 11990
 			} catch (Exception var3) { // L: 11992
 			}
 		}

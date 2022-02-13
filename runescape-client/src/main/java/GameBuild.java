@@ -204,14 +204,14 @@ public class GameBuild {
 
 							byte var7 = -1; // L: 179
 							if ((var6 & 4) != 0) { // L: 180
-								var5.targetIndex = var0.method7120(); // L: 181
+								var5.targetIndex = var0.readUnsignedShortAdd(); // L: 181
 								if (var5.targetIndex == 65535) { // L: 182
 									var5.targetIndex = -1;
 								}
 							}
 
 							if ((var6 & 32) != 0) { // L: 184
-								var5.field1112 = var0.method7120(); // L: 185
+								var5.field1112 = var0.readUnsignedShortAdd(); // L: 185
 								if (var5.pathLength == 0) { // L: 186
 									var5.orientation = var5.field1112; // L: 187
 									var5.field1112 = -1; // L: 188
@@ -223,8 +223,8 @@ public class GameBuild {
 							int var12;
 							int var15;
 							if ((var6 & 16) != 0) { // L: 191
-								var8 = var0.method7120(); // L: 192
-								PlayerType var9 = (PlayerType)UserComparator4.findEnumerated(VarbitComposition.PlayerType_values(), var0.method6996()); // L: 193
+								var8 = var0.readUnsignedShortAdd(); // L: 192
+								PlayerType var9 = (PlayerType)UserComparator4.findEnumerated(VarbitComposition.PlayerType_values(), var0.readUnsignedByteNeg()); // L: 193
 								boolean var10 = var0.readUnsignedByte() == 1; // L: 194
 								var11 = var0.readUnsignedByte(); // L: 195
 								var12 = var0.offset; // L: 196
@@ -236,7 +236,7 @@ public class GameBuild {
 
 									if (!var13 && Client.field539 == 0 && !var5.isHidden) { // L: 202
 										Players.field1240.offset = 0; // L: 203
-										var0.method7017(Players.field1240.array, 0, var11); // L: 204
+										var0.readBytesAdd(Players.field1240.payload, 0, var11); // L: 204
 										Players.field1240.offset = 0; // L: 205
 										String var14 = AbstractFont.escapeBrackets(class19.method277(MilliClock.method2955(Players.field1240))); // L: 206
 										var5.overheadText = var14.trim(); // L: 207
@@ -294,12 +294,12 @@ public class GameBuild {
 
 							int var17;
 							if ((var6 & 8) != 0) { // L: 247
-								var8 = var0.method7120(); // L: 248
+								var8 = var0.readUnsignedShortAdd(); // L: 248
 								if (var8 == 65535) { // L: 249
 									var8 = -1;
 								}
 
-								var17 = var0.method6996(); // L: 250
+								var17 = var0.readUnsignedByteNeg(); // L: 250
 								FaceNormal.performPlayerAnimation(var5, var8, var17); // L: 251
 							}
 
@@ -309,7 +309,7 @@ public class GameBuild {
 								var5.field1128 = var0.readByte(); // L: 256
 								var5.field1130 = var0.readByte(); // L: 257
 								var5.field1131 = var0.method7004() + Client.cycle; // L: 258
-								var5.field1132 = var0.method7120() + Client.cycle; // L: 259
+								var5.field1132 = var0.readUnsignedShortAdd() + Client.cycle; // L: 259
 								var5.field1133 = var0.readUnsignedShort(); // L: 260
 								if (var5.field1067) { // L: 261
 									var5.field1083 += var5.tileX; // L: 262

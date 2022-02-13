@@ -68,7 +68,7 @@ public class UserComparator7 extends AbstractUserComparator {
 				var3.writeCESU8(""); // L: 193
 			}
 
-			var2.write(var3.array, 0, var3.offset); // L: 194
+			var2.write(var3.payload, 0, var3.offset); // L: 194
 			var2.close(); // L: 195
 		} catch (IOException var4) { // L: 197
 			var4.printStackTrace(); // L: 198

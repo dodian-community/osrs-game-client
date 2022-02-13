@@ -198,8 +198,8 @@ public class InvDefinition extends DualNode {
 	)
 	public static void method2986(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = AbstractWorldMapData.getPacketBufferNode(ClientPacket.field2736, Client.packetWriter.isaacCipher); // L: 12003
-		var4.packetBuffer.method6962(var0); // L: 12004
-		var4.packetBuffer.method6962(var1); // L: 12005
+		var4.packetBuffer.writeShortAdd(var0); // L: 12004
+		var4.packetBuffer.writeShortAdd(var1); // L: 12005
 		var4.packetBuffer.method6993(var2); // L: 12006
 		var4.packetBuffer.writeIntME(var3 ? Client.field552 * -2052313535 * -1777671743 : 0); // L: 12007
 		Client.packetWriter.addNode(var4); // L: 12008

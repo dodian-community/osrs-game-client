@@ -47,7 +47,7 @@ public class MusicPatch extends Node {
 		Buffer var2 = new Buffer(var1); // L: 28
 
 		int var3;
-		for (var3 = 0; var2.array[var3 + var2.offset] != 0; ++var3) { // L: 29 30
+		for (var3 = 0; var2.payload[var3 + var2.offset] != 0; ++var3) { // L: 29 30
 		}
 
 		byte[] var4 = new byte[var3];
@@ -63,7 +63,7 @@ public class MusicPatch extends Node {
 		var2.offset += var3;
 
 		int var6;
-		for (var6 = 0; var2.array[var6 + var2.offset] != 0; ++var6) {
+		for (var6 = 0; var2.payload[var6 + var2.offset] != 0; ++var6) {
 		}
 
 		byte[] var7 = new byte[var6];
@@ -79,7 +79,7 @@ public class MusicPatch extends Node {
 		var2.offset += var6;
 
 		int var9;
-		for (var9 = 0; var2.array[var9 + var2.offset] != 0; ++var9) {
+		for (var9 = 0; var2.payload[var9 + var2.offset] != 0; ++var9) {
 		}
 
 		byte[] var10 = new byte[var9];
@@ -139,7 +139,7 @@ public class MusicPatch extends Node {
 		byte[] var16 = var14 > 0 ? new byte[var14 * 2] : null; // L: 82
 
 		int var17;
-		for (var17 = 0; var2.array[var17 + var2.offset] != 0; ++var17) { // L: 83 84
+		for (var17 = 0; var2.payload[var17 + var2.offset] != 0; ++var17) { // L: 83 84
 		}
 
 		byte[] var18 = new byte[var17]; // L: 85
@@ -204,7 +204,7 @@ public class MusicPatch extends Node {
 						var20 = -1; // L: 119
 					}
 
-					var23 = var2.array[var5++] - 1; // L: 120
+					var23 = var2.payload[var5++] - 1; // L: 120
 				}
 
 				this.field2977[var24] = (byte)var23; // L: 122
@@ -225,7 +225,7 @@ public class MusicPatch extends Node {
 						var20 = -1; // L: 132
 					}
 
-					var24 = var2.array[var8++] + 16 << 2; // L: 133
+					var24 = var2.payload[var8++] + 16 << 2; // L: 133
 				}
 
 				this.field2971[var25] = (byte)var24; // L: 135

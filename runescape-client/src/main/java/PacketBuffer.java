@@ -57,7 +57,7 @@ public class PacketBuffer extends Buffer {
 	)
 	@Export("writeByteIsaac")
 	public void writeByteIsaac(int var1) {
-		super.array[++super.offset - 1] = (byte)(var1 + this.isaacCipher.nextInt()); // L: 23
+		super.payload[++super.offset - 1] = (byte)(var1 + this.isaacCipher.nextInt()); // L: 23
 	} // L: 24
 
 	@ObfuscatedName("a")
@@ -67,7 +67,7 @@ public class PacketBuffer extends Buffer {
 	)
 	@Export("readByteIsaac")
 	public int readByteIsaac() {
-		return super.array[++super.offset - 1] - this.isaacCipher.nextInt() & 255; // L: 27
+		return super.payload[++super.offset - 1] - this.isaacCipher.nextInt() & 255; // L: 27
 	}
 
 	@ObfuscatedName("o")
@@ -76,7 +76,7 @@ public class PacketBuffer extends Buffer {
 		garbageValue = "28330"
 	)
 	public boolean method6912() {
-		int var1 = super.array[super.offset] - this.isaacCipher.method7540() & 255; // L: 31
+		int var1 = super.payload[super.offset] - this.isaacCipher.method7540() & 255; // L: 31
 		return var1 >= 128; // L: 32
 	}
 
@@ -87,8 +87,8 @@ public class PacketBuffer extends Buffer {
 	)
 	@Export("readSmartByteShortIsaac")
 	public int readSmartByteShortIsaac() {
-		int var1 = super.array[++super.offset - 1] - this.isaacCipher.nextInt() & 255; // L: 37
-		return var1 < 128 ? var1 : (var1 - 128 << 8) + (super.array[++super.offset - 1] - this.isaacCipher.nextInt() & 255); // L: 38 39
+		int var1 = super.payload[++super.offset - 1] - this.isaacCipher.nextInt() & 255; // L: 37
+		return var1 < 128 ? var1 : (var1 - 128 << 8) + (super.payload[++super.offset - 1] - this.isaacCipher.nextInt() & 255); // L: 38 39
 	}
 
 	@ObfuscatedName("e")
@@ -98,7 +98,7 @@ public class PacketBuffer extends Buffer {
 	)
 	public void method6939(byte[] var1, int var2, int var3) {
 		for (int var4 = 0; var4 < var3; ++var4) { // L: 43
-			var1[var4 + var2] = (byte)(super.array[++super.offset - 1] - this.isaacCipher.nextInt());
+			var1[var4 + var2] = (byte)(super.payload[++super.offset - 1] - this.isaacCipher.nextInt());
 		}
 
 	} // L: 44
@@ -125,14 +125,14 @@ public class PacketBuffer extends Buffer {
 		int var4 = 0; // L: 53
 
 		for (this.bitIndex += var1; var1 > var3; var3 = 8) { // L: 54 55 58
-			var4 += (super.array[var2++] & field4292[var3]) << var1 - var3; // L: 56
+			var4 += (super.payload[var2++] & field4292[var3]) << var1 - var3; // L: 56
 			var1 -= var3; // L: 57
 		}
 
 		if (var3 == var1) { // L: 60
-			var4 += super.array[var2] & field4292[var3];
+			var4 += super.payload[var2] & field4292[var3];
 		} else {
-			var4 += super.array[var2] >> var3 - var1 & field4292[var1]; // L: 61
+			var4 += super.payload[var2] >> var3 - var1 & field4292[var1]; // L: 61
 		}
 
 		return var4; // L: 62

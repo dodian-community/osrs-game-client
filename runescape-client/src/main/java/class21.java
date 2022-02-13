@@ -139,8 +139,8 @@ public class class21 {
 			var2 = var1.readUnsignedByte(); // L: 7234
 			var3 = (var2 >> 4 & 7) + ItemComposition.field1931; // L: 7235
 			var4 = (var2 & 7) + Actor.field1146; // L: 7236
-			var5 = var1.method7120(); // L: 7237
-			var6 = var1.method7120(); // L: 7238
+			var5 = var1.readUnsignedShortAdd(); // L: 7237
+			var6 = var1.readUnsignedShortAdd(); // L: 7238
 			var7 = var1.method7006(); // L: 7239
 			if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) { // L: 7240
 				NodeDeque var46 = Client.groundItems[GrandExchangeOfferTotalQuantityComparator.Client_plane][var3][var4]; // L: 7241
@@ -165,7 +165,7 @@ public class class21 {
 				byte var37 = var1.readByte(); // L: 7257
 				var3 = var1.method7006(); // L: 7258
 				var4 = var1.method7004(); // L: 7259
-				var5 = var1.method6996() * 4; // L: 7260
+				var5 = var1.readUnsignedByteNeg() * 4; // L: 7260
 				var6 = var1.method7008(); // L: 7261
 				byte var39 = var1.method6973(); // L: 7262
 				var8 = var1.method6995(); // L: 7263
@@ -220,7 +220,7 @@ public class class21 {
 						var5 = var1.method6997(); // L: 7309
 						var6 = (var5 >> 4 & 7) + ItemComposition.field1931; // L: 7310
 						var7 = (var5 & 7) + Actor.field1146; // L: 7311
-						var8 = var1.method6996(); // L: 7312
+						var8 = var1.readUnsignedByteNeg(); // L: 7312
 						var9 = var1.method7004(); // L: 7313
 						if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) { // L: 7314
 							var10 = var3 + 1; // L: 7315
@@ -237,7 +237,7 @@ public class class21 {
 
 					if (class240.field2775 == var0) { // L: 7328
 						var2 = var1.method7004(); // L: 7329
-						var3 = var1.method7120(); // L: 7330
+						var3 = var1.readUnsignedShortAdd(); // L: 7330
 						var4 = var1.method6995(); // L: 7331
 						var5 = (var4 >> 4 & 7) + ItemComposition.field1931; // L: 7332
 						var6 = (var4 & 7) + Actor.field1146; // L: 7333
@@ -255,16 +255,16 @@ public class class21 {
 
 					} else {
 						if (class240.field2778 == var0) { // L: 7344
-							var2 = var1.method7120(); // L: 7345
+							var2 = var1.readUnsignedShortAdd(); // L: 7345
 							var3 = var1.method7006(); // L: 7346
-							var4 = var1.method6996(); // L: 7347
+							var4 = var1.readUnsignedByteNeg(); // L: 7347
 							var5 = var4 >> 2; // L: 7348
 							var6 = var4 & 3; // L: 7349
 							var7 = Client.field530[var5]; // L: 7350
 							byte var38 = var1.method6973(); // L: 7351
 							byte var40 = var1.method7128(); // L: 7352
 							byte var41 = var1.method6973(); // L: 7353
-							var11 = var1.method7120(); // L: 7354
+							var11 = var1.readUnsignedShortAdd(); // L: 7354
 							var12 = var1.readUnsignedShort(); // L: 7355
 							byte var13 = var1.readByte(); // L: 7356
 							var14 = var1.method6995(); // L: 7357
@@ -331,7 +331,7 @@ public class class21 {
 							var2 = var1.method7006(); // L: 7410
 							var3 = var1.readUnsignedByte(); // L: 7411
 							var4 = var1.method7006(); // L: 7412
-							var5 = var1.method6996(); // L: 7413
+							var5 = var1.readUnsignedByteNeg(); // L: 7413
 							var6 = (var5 >> 4 & 7) + ItemComposition.field1931; // L: 7414
 							var7 = (var5 & 7) + Actor.field1146; // L: 7415
 							if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) { // L: 7416
@@ -343,7 +343,7 @@ public class class21 {
 
 						} else if (class240.field2774 == var0) { // L: 7424
 							var2 = var1.readUnsignedShort(); // L: 7425
-							var3 = var1.method6996(); // L: 7426
+							var3 = var1.readUnsignedByteNeg(); // L: 7426
 							var4 = (var3 >> 4 & 7) + ItemComposition.field1931; // L: 7427
 							var5 = (var3 & 7) + Actor.field1146; // L: 7428
 							var6 = var1.method6997(); // L: 7429

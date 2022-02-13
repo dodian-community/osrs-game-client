@@ -140,7 +140,7 @@ public abstract class class132 extends Node {
 		}
 
 		var0.writeSmartByteShort(var5.length); // L: 58
-		var0.offset += class264.huffman.compress(var5, 0, var5.length, var0.array, var0.offset); // L: 59
+		var0.offset += class264.huffman.compress(var5, 0, var5.length, var0.payload, var0.offset); // L: 59
 		return var0.offset - var2; // L: 60
 	}
 

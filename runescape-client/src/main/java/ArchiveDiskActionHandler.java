@@ -131,7 +131,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 					Buffer var0 = new Buffer(4); // L: 295
 					var0.writeByte(2); // L: 296
 					var0.writeMedium(0); // L: 297
-					NetCache.NetCache_socket.write(var0.array, 0, 4); // L: 298
+					NetCache.NetCache_socket.write(var0.payload, 0, 4); // L: 298
 				} catch (IOException var3) {
 					try {
 						NetCache.NetCache_socket.close(); // L: 302

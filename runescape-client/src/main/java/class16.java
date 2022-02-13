@@ -311,7 +311,7 @@ public class class16 implements ThreadFactory {
 			}
 
 			if ((var5 & 4) != 0) { // L: 7862
-				var6 = var1.method6996(); // L: 7863
+				var6 = var1.readUnsignedByteNeg(); // L: 7863
 				int var11;
 				int var12;
 				int var15;
@@ -359,7 +359,7 @@ public class class16 implements ThreadFactory {
 			}
 
 			if ((var5 & 2) != 0) { // L: 7903
-				var4.definition = ScriptFrame.getNpcDefinition(var1.method7120()); // L: 7904
+				var4.definition = ScriptFrame.getNpcDefinition(var1.readUnsignedShortAdd()); // L: 7904
 				var4.field1087 = var4.definition.size; // L: 7905
 				var4.field1138 = var4.definition.rotation; // L: 7906
 				var4.walkSequence = var4.definition.walkSequence; // L: 7907
@@ -397,7 +397,7 @@ public class class16 implements ThreadFactory {
 				var4.field1100 = var1.method6973(); // L: 7931
 				var4.field1128 = var1.method7128(); // L: 7932
 				var4.field1130 = var1.method6999(); // L: 7933
-				var4.field1131 = var1.method7120() + Client.cycle; // L: 7934
+				var4.field1131 = var1.readUnsignedShortAdd() + Client.cycle; // L: 7934
 				var4.field1132 = var1.readUnsignedShort() + Client.cycle; // L: 7935
 				var4.field1133 = var1.method7004(); // L: 7936
 				var4.pathLength = 1; // L: 7937
@@ -439,7 +439,7 @@ public class class16 implements ThreadFactory {
 
 			if ((var5 & 64) != 0) { // L: 7970
 				var4.spotAnimation = var1.readUnsignedShort(); // L: 7971
-				var6 = var1.method7044(); // L: 7972
+				var6 = var1.readIntLE(); // L: 7972
 				var4.field1126 = var6 >> 16; // L: 7973
 				var4.field1125 = (var6 & 65535) + Client.cycle; // L: 7974
 				var4.spotAnimationFrame = 0; // L: 7975

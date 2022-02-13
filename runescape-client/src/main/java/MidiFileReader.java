@@ -49,7 +49,7 @@ public class MidiFileReader {
 	@ObfuscatedName("i")
 	@Export("parse")
 	void parse(byte[] var1) {
-		this.buffer.array = var1; // L: 30
+		this.buffer.payload = var1; // L: 30
 		this.buffer.offset = 10; // L: 33
 		int var2 = this.buffer.readUnsignedShort(); // L: 34
 		this.division = this.buffer.readUnsignedShort(); // L: 36
@@ -84,7 +84,7 @@ public class MidiFileReader {
 	@ObfuscatedName("w")
 	@Export("clear")
 	void clear() {
-		this.buffer.array = null; // L: 56
+		this.buffer.payload = null; // L: 56
 		this.trackStarts = null; // L: 57
 		this.trackPositions = null; // L: 58
 		this.trackLengths = null; // L: 59
@@ -94,7 +94,7 @@ public class MidiFileReader {
 	@ObfuscatedName("s")
 	@Export("isReady")
 	boolean isReady() {
-		return this.buffer.array != null; // L: 64
+		return this.buffer.payload != null; // L: 64
 	}
 
 	@ObfuscatedName("a")
@@ -139,7 +139,7 @@ public class MidiFileReader {
 	@ObfuscatedName("b")
 	@Export("readMessage0")
 	int readMessage0(int var1) {
-		byte var2 = this.buffer.array[this.buffer.offset]; // L: 94
+		byte var2 = this.buffer.payload[this.buffer.offset]; // L: 94
 		int var5;
 		if (var2 < 0) { // L: 95
 			var5 = var2 & 255; // L: 96
@@ -154,7 +154,7 @@ public class MidiFileReader {
 		} else {
 			int var3 = this.buffer.readVarInt(); // L: 104
 			if (var5 == 247 && var3 > 0) { // L: 105
-				int var4 = this.buffer.array[this.buffer.offset] & 255; // L: 106
+				int var4 = this.buffer.payload[this.buffer.offset] & 255; // L: 106
 				if (var4 >= 241 && var4 <= 243 || var4 == 246 || var4 == 248 || var4 >= 250 && var4 <= 252 || var4 == 254) { // L: 107
 					++this.buffer.offset; // L: 108
 					this.field2964[var1] = var4; // L: 109

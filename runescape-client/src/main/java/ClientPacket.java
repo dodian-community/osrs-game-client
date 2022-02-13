@@ -316,7 +316,7 @@ public class ClientPacket implements class238 {
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
 	)
-	public static final ClientPacket field2725;
+	public static final ClientPacket mouseClickPacket;
 	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
@@ -411,7 +411,7 @@ public class ClientPacket implements class238 {
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
 	)
-	public static final ClientPacket field2744;
+	public static final ClientPacket objectOption1;
 	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
@@ -461,7 +461,7 @@ public class ClientPacket implements class238 {
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
 	)
-	public static final ClientPacket field2664;
+	public static final ClientPacket objectOption2;
 	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
@@ -486,7 +486,7 @@ public class ClientPacket implements class238 {
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
 	)
-	public static final ClientPacket field2759;
+	public static final ClientPacket gameChat;
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
 		descriptor = "Lik;"
@@ -612,7 +612,7 @@ public class ClientPacket implements class238 {
 		field2695 = new ClientPacket(58, 14); // L: 63
 		field2723 = new ClientPacket(59, 3); // L: 64
 		field2724 = new ClientPacket(60, -2); // L: 65
-		field2725 = new ClientPacket(61, 6); // L: 66
+		mouseClickPacket = new ClientPacket(61, 6); // L: 66
 		field2726 = new ClientPacket(62, 0); // L: 67
 		field2727 = new ClientPacket(63, 16); // L: 68
 		field2761 = new ClientPacket(64, 6); // L: 69
@@ -631,7 +631,7 @@ public class ClientPacket implements class238 {
 		field2741 = new ClientPacket(77, 11); // L: 82
 		field2742 = new ClientPacket(78, 0); // L: 83
 		field2743 = new ClientPacket(79, 1); // L: 84
-		field2744 = new ClientPacket(80, 7); // L: 85
+		objectOption1 = new ClientPacket(80, 7); // L: 85
 		field2728 = new ClientPacket(81, 3); // L: 86
 		field2670 = new ClientPacket(82, 8); // L: 87
 		field2747 = new ClientPacket(83, -1); // L: 88
@@ -641,12 +641,12 @@ public class ClientPacket implements class238 {
 		field2746 = new ClientPacket(87, -1); // L: 92
 		field2752 = new ClientPacket(88, -1); // L: 93
 		field2753 = new ClientPacket(89, 16); // L: 94
-		field2664 = new ClientPacket(90, 7); // L: 95
+		objectOption2 = new ClientPacket(90, 7); // L: 95
 		field2751 = new ClientPacket(91, 8); // L: 96
 		field2756 = new ClientPacket(92, 15); // L: 97
 		field2706 = new ClientPacket(93, 8); // L: 98
 		field2740 = new ClientPacket(94, 8); // L: 99
-		field2759 = new ClientPacket(95, -1); // L: 100
+		gameChat = new ClientPacket(95, -1); // L: 100
 		field2703 = new ClientPacket(96, -1); // L: 101
 		field2701 = new ClientPacket(97, 7); // L: 102
 		field2762 = new ClientPacket(98, 2); // L: 103

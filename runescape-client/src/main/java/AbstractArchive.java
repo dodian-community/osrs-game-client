@@ -528,7 +528,7 @@ public abstract class AbstractArchive {
 				} else {
 					var21 = ChatChannel.method2013(this.groups[var1], true); // L: 252
 					Buffer var8 = new Buffer(var21); // L: 253
-					var8.xteaDecrypt(var2, 5, var8.array.length); // L: 254
+					var8.xteaDecrypt(var2, 5, var8.payload.length); // L: 254
 				}
 
 				byte[] var25 = ByteArrayPool.decompressBytes(var21); // L: 259

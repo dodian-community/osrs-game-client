@@ -191,7 +191,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
 	)
-	public static final ServerPacket field2828;
+	public static final ServerPacket ifMoveSubPacket;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
@@ -201,7 +201,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
 	)
-	public static final ServerPacket field2830;
+	public static final ServerPacket playerInfoPacket;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
@@ -246,7 +246,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
 	)
-	public static final ServerPacket field2839;
+	public static final ServerPacket opcode47;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
@@ -366,7 +366,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
 	)
-	public static final ServerPacket field2877;
+	public static final ServerPacket ifSetEvents;
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
@@ -550,9 +550,9 @@ public class ServerPacket {
 		field2825 = new ServerPacket(33, 10); // L: 38
 		field2826 = new ServerPacket(34, 6); // L: 39
 		field2827 = new ServerPacket(35, -1); // L: 40
-		field2828 = new ServerPacket(36, 8); // L: 41
+		ifMoveSubPacket = new ServerPacket(36, 8); // L: 41
 		field2829 = new ServerPacket(37, -1); // L: 42
-		field2830 = new ServerPacket(38, -2); // L: 43
+		playerInfoPacket = new ServerPacket(38, -2); // L: 43
 		field2887 = new ServerPacket(39, 2); // L: 44
 		field2880 = new ServerPacket(40, 6); // L: 45
 		field2833 = new ServerPacket(41, 6); // L: 46
@@ -561,7 +561,7 @@ public class ServerPacket {
 		field2836 = new ServerPacket(44, 2); // L: 49
 		field2837 = new ServerPacket(45, -2); // L: 50
 		field2838 = new ServerPacket(46, -2); // L: 51
-		field2839 = new ServerPacket(47, -2); // L: 52
+		opcode47 = new ServerPacket(47, -2); // L: 52
 		field2840 = new ServerPacket(48, 2); // L: 53
 		field2841 = new ServerPacket(49, 1); // L: 54
 		field2842 = new ServerPacket(50, 8); // L: 55
@@ -585,7 +585,7 @@ public class ServerPacket {
 		field2860 = new ServerPacket(68, -1); // L: 73
 		field2861 = new ServerPacket(69, 2); // L: 74
 		field2872 = new ServerPacket(70, 4); // L: 75
-		field2877 = new ServerPacket(71, 12); // L: 76
+		ifSetEvents = new ServerPacket(71, 12); // L: 76
 		field2864 = new ServerPacket(72, 0); // L: 77
 		field2851 = new ServerPacket(73, -2); // L: 78
 		field2832 = new ServerPacket(74, 1); // L: 79

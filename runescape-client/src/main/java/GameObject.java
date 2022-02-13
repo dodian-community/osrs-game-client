@@ -119,7 +119,7 @@ public final class GameObject {
 				var2 = new Buffer(4); // L: 53
 				var2.writeByte(var1 ? 2 : 3); // L: 54
 				var2.writeMedium(0); // L: 55
-				NetCache.NetCache_socket.write(var2.array, 0, 4); // L: 56
+				NetCache.NetCache_socket.write(var2.payload, 0, 4); // L: 56
 			} catch (IOException var7) {
 				try {
 					NetCache.NetCache_socket.close(); // L: 60
@@ -148,7 +148,7 @@ public final class GameObject {
 								var2.writeByte(4); // L: 89
 								var2.writeByte(NetCache.field3719); // L: 90
 								var2.writeShort(0); // L: 91
-								NetCache.NetCache_socket.write(var2.array, 0, 4); // L: 92
+								NetCache.NetCache_socket.write(var2.payload, 0, 4); // L: 92
 							} catch (IOException var5) {
 								try {
 									NetCache.NetCache_socket.close(); // L: 96

@@ -221,7 +221,7 @@ public class Login {
 		try {
 			var0 = DevicePcmPlayerProvider.getPreferencesFile("", RouteStrategy.field1986.name, true); // L: 102
 			Buffer var1 = class408.clientPreferences.toBuffer(); // L: 103
-			var0.write(var1.array, 0, var1.offset); // L: 104
+			var0.write(var1.payload, 0, var1.offset); // L: 104
 		} catch (Exception var3) { // L: 106
 		}
 

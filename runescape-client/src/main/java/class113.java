@@ -185,7 +185,7 @@ public class class113 extends class116 {
 					Buffer var19 = new Buffer(4); // L: 243
 					var19.writeByte(3); // L: 244
 					var19.writeMedium(0); // L: 245
-					NetCache.NetCache_socket.write(var19.array, 0, 4); // L: 246
+					NetCache.NetCache_socket.write(var19.payload, 0, 4); // L: 246
 				} catch (IOException var16) {
 					try {
 						NetCache.NetCache_socket.close(); // L: 250

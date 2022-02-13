@@ -66,7 +66,7 @@ public final class Canvas extends java.awt.Canvas {
 		int var7;
 		int var8;
 		if (!Client.isInInstance) { // L: 5701
-			var2 = var1.method7120(); // L: 5702
+			var2 = var1.readUnsignedShortAdd(); // L: 5702
 			var3 = var1.method7004(); // L: 5703
 			int var4 = var1.readUnsignedShort(); // L: 5704
 			Client.xteaKeys = new int[var4][4]; // L: 5705
@@ -109,7 +109,7 @@ public final class Canvas extends java.awt.Canvas {
 
 			EnumComposition.method3107(var3, var2, true); // L: 5732
 		} else {
-			var2 = var1.method7120(); // L: 5735
+			var2 = var1.readUnsignedShortAdd(); // L: 5735
 			var3 = var1.readUnsignedShort(); // L: 5736
 			boolean var15 = var1.readUnsignedByte() == 1; // L: 5737
 			var5 = var1.readUnsignedShort(); // L: 5738

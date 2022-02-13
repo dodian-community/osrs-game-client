@@ -20,7 +20,7 @@ public class MusicTrack extends Node {
 		descriptor = "(Lop;)V"
 	)
 	MusicTrack(Buffer var1) {
-		var1.offset = var1.array.length - 3; // L: 22
+		var1.offset = var1.payload.length - 3; // L: 22
 		int var2 = var1.readUnsignedByte(); // L: 23
 		int var3 = var1.readUnsignedShort(); // L: 24
 		int var4 = var2 * 10 + 14; // L: 25
@@ -207,7 +207,7 @@ public class MusicTrack extends Node {
 				while (true) {
 					int var63 = var1.readVarInt(); // L: 180
 					var51.writeVarInt(var63); // L: 181
-					int var64 = var1.array[var29++] & 255; // L: 182
+					int var64 = var1.payload[var29++] & 255; // L: 182
 					boolean var65 = var64 != var62; // L: 183
 					var62 = var64 & 15; // L: 184
 					if (var64 == 7) { // L: 185
@@ -228,9 +228,9 @@ public class MusicTrack extends Node {
 
 						var51.writeByte(81); // L: 193
 						var51.writeByte(3); // L: 194
-						var51.writeByte(var1.array[var50++]); // L: 195
-						var51.writeByte(var1.array[var50++]); // L: 196
-						var51.writeByte(var1.array[var50++]); // L: 197
+						var51.writeByte(var1.payload[var50++]); // L: 195
+						var51.writeByte(var1.payload[var50++]); // L: 196
+						var51.writeByte(var1.payload[var50++]); // L: 197
 					} else {
 						var52 ^= var64 >> 4; // L: 200
 						if (var62 == 0) { // L: 201
@@ -238,8 +238,8 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 144);
 							}
 
-							var53 += var1.array[var37++]; // L: 203
-							var54 += var1.array[var38++]; // L: 204
+							var53 += var1.payload[var37++]; // L: 203
+							var54 += var1.payload[var38++]; // L: 204
 							var51.writeByte(var53 & 127); // L: 205
 							var51.writeByte(var54 & 127); // L: 206
 						} else if (var62 == 1) { // L: 209
@@ -247,8 +247,8 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 128);
 							}
 
-							var53 += var1.array[var37++]; // L: 211
-							var55 += var1.array[var40++]; // L: 212
+							var53 += var1.payload[var37++]; // L: 211
+							var55 += var1.payload[var40++]; // L: 212
 							var51.writeByte(var53 & 127); // L: 213
 							var51.writeByte(var55 & 127); // L: 214
 						} else if (var62 == 2) { // L: 217
@@ -256,37 +256,37 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 176);
 							}
 
-							var28 = var28 + var1.array[var15++] & 127; // L: 219
+							var28 = var28 + var1.payload[var15++] & 127; // L: 219
 							var51.writeByte(var28); // L: 220
 							byte var66;
 							if (var28 != 0 && var28 != 32) { // L: 222
 								if (var28 == 1) { // L: 223
-									var66 = var1.array[var34++];
+									var66 = var1.payload[var34++];
 								} else if (var28 == 33) { // L: 224
-									var66 = var1.array[var41++];
+									var66 = var1.payload[var41++];
 								} else if (var28 == 7) { // L: 225
-									var66 = var1.array[var35++];
+									var66 = var1.payload[var35++];
 								} else if (var28 == 39) { // L: 226
-									var66 = var1.array[var42++];
+									var66 = var1.payload[var42++];
 								} else if (var28 == 10) { // L: 227
-									var66 = var1.array[var36++];
+									var66 = var1.payload[var36++];
 								} else if (var28 == 42) { // L: 228
-									var66 = var1.array[var43++];
+									var66 = var1.payload[var43++];
 								} else if (var28 == 99) { // L: 229
-									var66 = var1.array[var46++];
+									var66 = var1.payload[var46++];
 								} else if (var28 == 98) { // L: 230
-									var66 = var1.array[var47++];
+									var66 = var1.payload[var47++];
 								} else if (var28 == 101) { // L: 231
-									var66 = var1.array[var48++];
+									var66 = var1.payload[var48++];
 								} else if (var28 == 100) { // L: 232
-									var66 = var1.array[var49++];
+									var66 = var1.payload[var49++];
 								} else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) { // L: 233
-									var66 = var1.array[var39++]; // L: 234
+									var66 = var1.payload[var39++]; // L: 234
 								} else {
-									var66 = var1.array[var30++];
+									var66 = var1.payload[var30++];
 								}
 							} else {
-								var66 = var1.array[var44++];
+								var66 = var1.payload[var44++];
 							}
 
 							int var67 = var66 + var59[var28]; // L: 235
@@ -297,8 +297,8 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 224);
 							}
 
-							var56 += var1.array[var45++]; // L: 242
-							var56 += var1.array[var33++] << 7; // L: 243
+							var56 += var1.payload[var45++]; // L: 242
+							var56 += var1.payload[var33++] << 7; // L: 243
 							var51.writeByte(var56 & 127); // L: 244
 							var51.writeByte(var56 >> 7 & 127); // L: 245
 						} else if (var62 == 4) { // L: 248
@@ -306,15 +306,15 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 208);
 							}
 
-							var57 += var1.array[var32++]; // L: 250
+							var57 += var1.payload[var32++]; // L: 250
 							var51.writeByte(var57 & 127); // L: 251
 						} else if (var62 == 5) { // L: 254
 							if (var65) { // L: 255
 								var51.writeByte(var52 + 160);
 							}
 
-							var53 += var1.array[var37++]; // L: 256
-							var58 += var1.array[var31++]; // L: 257
+							var53 += var1.payload[var37++]; // L: 256
+							var58 += var1.payload[var31++]; // L: 257
 							var51.writeByte(var53 & 127); // L: 258
 							var51.writeByte(var58 & 127); // L: 259
 						} else {
@@ -326,7 +326,7 @@ public class MusicTrack extends Node {
 								var51.writeByte(var52 + 192);
 							}
 
-							var51.writeByte(var1.array[var44++]); // L: 264
+							var51.writeByte(var1.payload[var44++]); // L: 264
 						}
 					}
 				}

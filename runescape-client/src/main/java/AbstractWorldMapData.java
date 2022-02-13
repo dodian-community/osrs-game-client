@@ -274,7 +274,7 @@ public abstract class AbstractWorldMapData {
 			}
 
 			byte[] var3 = new byte[var2]; // L: 71
-			var0.offset += class264.huffman.decompress(var0.array, var0.offset, var3, 0, var2); // L: 72
+			var0.offset += class264.huffman.decompress(var0.payload, var0.offset, var3, 0, var2); // L: 72
 			String var4 = class264.decodeStringCp1252(var3, 0, var2); // L: 73
 			return var4; // L: 74
 		} catch (Exception var6) { // L: 76

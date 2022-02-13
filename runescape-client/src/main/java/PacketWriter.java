@@ -120,13 +120,13 @@ public class PacketWriter {
 
 			while (true) {
 				PacketBufferNode var1 = (PacketBufferNode)this.packetBufferNodes.last(); // L: 40
-				if (var1 == null || var1.index > this.buffer.array.length - this.buffer.offset) { // L: 41 42
-					this.socket.write(this.buffer.array, 0, this.buffer.offset); // L: 49
+				if (var1 == null || var1.index > this.buffer.payload.length - this.buffer.offset) { // L: 41 42
+					this.socket.write(this.buffer.payload, 0, this.buffer.offset); // L: 49
 					this.pendingWrites = 0; // L: 50
 					break;
 				}
 
-				this.buffer.writeBytes(var1.packetBuffer.array, 0, var1.index); // L: 43
+				this.buffer.writeBytes(var1.packetBuffer.payload, 0, var1.index); // L: 43
 				this.bufferSize -= var1.index; // L: 44
 				var1.remove(); // L: 45
 				var1.packetBuffer.releaseArray(); // L: 46
@@ -143,6 +143,9 @@ public class PacketWriter {
 	)
 	@Export("addNode")
 	public final void addNode(PacketBufferNode var1) {
+		if (var1 != null && var1.clientPacket != null) {
+			System.out.println("Sending packet: " + var1.clientPacket.id);
+		}
 		this.packetBufferNodes.addFirst(var1); // L: 55
 		var1.index = var1.packetBuffer.offset; // L: 56
 		var1.packetBuffer.offset = 0; // L: 57

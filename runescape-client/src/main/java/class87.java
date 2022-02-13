@@ -13,9 +13,9 @@ public class class87 {
 	static Script newScript(byte[] var0) {
 		Script var1 = new Script(); // L: 112
 		Buffer var2 = new Buffer(var0); // L: 113
-		var2.offset = var2.array.length - 2; // L: 114
+		var2.offset = var2.payload.length - 2; // L: 114
 		int var3 = var2.readUnsignedShort(); // L: 115
-		int var4 = var2.array.length - 2 - var3 - 12; // L: 116
+		int var4 = var2.payload.length - 2 - var3 - 12; // L: 116
 		var2.offset = var4; // L: 117
 		int var5 = var2.readInt(); // L: 118
 		var1.localIntCount = var2.readUnsignedShort(); // L: 119

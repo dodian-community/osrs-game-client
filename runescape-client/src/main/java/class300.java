@@ -258,8 +258,8 @@ public class class300 {
 
 					Buffer var11;
 					int var12;
-					for (var11 = new Buffer((int)var10.length()); var11.offset < var11.array.length; var11.offset += var12) { // L: 79 80 83
-						var12 = var10.read(var11.array, var11.offset, var11.array.length - var11.offset); // L: 81
+					for (var11 = new Buffer((int)var10.length()); var11.offset < var11.payload.length; var11.offset += var12) { // L: 79 80 83
+						var12 = var10.read(var11.payload, var11.offset, var11.payload.length - var11.offset); // L: 81
 						if (var12 == -1) { // L: 82
 							throw new IOException();
 						}
